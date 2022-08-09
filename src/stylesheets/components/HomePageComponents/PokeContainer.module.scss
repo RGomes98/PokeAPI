@@ -1,0 +1,11 @@
+//SCSS Files
+@use '../../variables' as variables;
+
+//PokeContainer Styles
+.pokeContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem 2.5rem;
+  margin-top: 5rem;
+  justify-content: center;
+}

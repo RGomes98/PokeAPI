@@ -1,0 +1,20 @@
+//SCSS Files
+@use '../../variables.scss' as variables;
+
+//PokeSounds Styles
+.soundPlayerContainer {
+  .playButton {
+    left: -5px;
+    z-index: 5;
+    cursor: pointer;
+    font-size: 2.3rem;
+    position: absolute;
+    color: variables.$font-color-medium-grey;
+  }
+
+  .activePlayButton {
+    opacity: 0.9;
+    transition: ease-out;
+    fill: variables.$pokeball-red;
+  }
+}

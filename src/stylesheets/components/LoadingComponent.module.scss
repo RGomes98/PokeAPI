@@ -1,0 +1,36 @@
+//SCSS Files
+@use '../variables' as variables;
+
+//LoadingComponent Styles
+.loadingComponentContainer {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  .loadingComponentHeading {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 2rem;
+  }
+
+  .loadingComponentImg {
+    width: 125px;
+    height: 125px;
+  }
+
+  @media (max-width: 500px) {
+    .loadingComponentHeading {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 1.5rem;
+    }
+
+    .loadingComponentImg {
+      width: 100px;
+      height: 100px;
+    }
+  }
+}

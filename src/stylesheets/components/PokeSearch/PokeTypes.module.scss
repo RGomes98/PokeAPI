@@ -1,0 +1,96 @@
+//SCSS Files
+@use '../../variables' as variables;
+
+//PokeTypes Styles
+.pokeTypeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50%;
+  width: 100%;
+  gap: 5% 0;
+
+  .grass {
+    background-color: variables.$grass-type;
+  }
+  .rock {
+    background-color: variables.$rock-type;
+  }
+  .ice {
+    background-color: variables.$ice-type;
+  }
+  .dragon {
+    background-color: variables.$dragon-type;
+  }
+  .dark {
+    background-color: variables.$dark-type;
+  }
+  .psychic {
+    background-color: variables.$psychic-type;
+  }
+  .bug {
+    background-color: variables.$bug-type;
+  }
+  .flying {
+    background-color: variables.$flying-type;
+  }
+  .steel {
+    background-color: variables.$steel-type;
+  }
+  .fire {
+    background-color: variables.$fire-type;
+  }
+  .fighting {
+    background-color: variables.$fighting-type;
+  }
+  .ground {
+    background-color: variables.$ground-type;
+  }
+  .ghost {
+    background-color: variables.$ghost-type;
+  }
+  .poison {
+    background-color: variables.$poison-type;
+  }
+  .water {
+    background-color: variables.$water-type;
+  }
+  .fairy {
+    background-color: variables.$fairy-type;
+  }
+  .electric {
+    background-color: variables.$electric-type;
+  }
+  .normal {
+    background-color: variables.$normal-type;
+  }
+
+  .pokeTypeText {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    color: variables.$white;
+    border-radius: 0.3rem;
+    font-size: clamp(1rem, 5vw, 1.5rem);
+    font-weight: 300;
+    width: 100%;
+    height: 50%;
+    box-shadow: 0px 2px 5px variables.$search-box-shadow;
+  }
+  @media (max-width: 500px) {
+    .pokeTypeText {
+      height: auto;
+      font-size: 0.8rem;
+      padding: 0.3rem;
+      min-width: 100%;
+    }
+  }
+}
+@media (max-width: 500px) {
+  .pokeTypeContainer {
+    flex-direction: row;
+    gap: 0 3%;
+  }
+}

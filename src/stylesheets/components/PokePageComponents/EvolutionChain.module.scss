@@ -1,0 +1,42 @@
+//SCSS Files
+@use '../../variables.scss' as variables;
+
+//EvolutionChain Styles
+.evolutionChainContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 1.2rem;
+  margin-top: auto;
+
+  .evolutionChainHeading {
+    font-size: 2rem;
+  }
+
+  .evolutionChainWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row-reverse;
+
+    .evolutionChainPoke {
+      display: flex;
+      cursor: pointer;
+      align-items: center;
+      flex-direction: column;
+
+      .evolutionChainImg {
+        width: 200px;
+        height: 200px;
+        image-rendering: pixelated;
+        filter: drop-shadow(3px 5px 2px variables.$search-box-shadow);
+      }
+
+      .evolutionChainName {
+        text-transform: uppercase;
+      }
+    }
+  }
+}

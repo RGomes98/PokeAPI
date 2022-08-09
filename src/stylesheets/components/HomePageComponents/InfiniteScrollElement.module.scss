@@ -1,0 +1,12 @@
+//SCSS Files
+@use '../../variables.scss' as variables;
+
+//InfiniteScrollElement Styles
+.infiniteScrollSpinner {
+  margin-top: 3rem;
+  width: 100px;
+  height: 100px;
+}
+.hiddenInfiniteScroll {
+  visibility: hidden;
+}

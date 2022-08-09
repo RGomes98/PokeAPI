@@ -1,0 +1,101 @@
+//SCSS Files
+@use '../variables' as variables;
+
+//NotFoundPage Styles
+.notFoundContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 100vh;
+
+  .notFoundPokeballWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    .notFoundNumbers {
+      font-weight: 700;
+      color: variables.$font-color-grey;
+      font-size: clamp(8rem, 45vw, 19rem);
+    }
+
+    .pokeballFirstCircle::before {
+      content: '';
+      height: 6px;
+      width: 100%;
+      position: absolute;
+      background-color: variables.$font-color;
+    }
+
+    .pokeballFirstCircle {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      border: solid 8px;
+      height: clamp(7rem, 30vw, 16rem);
+      width: clamp(7rem, 30vw, 16rem);
+      background-image: linear-gradient(variables.$pokeball-red 50%, variables.$white 50%);
+
+      .pokeballSecondCircle {
+        width: 38%;
+        height: 38%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        border-radius: 50%;
+        background-color: variables.$white;
+        border: solid 6px;
+
+        .pokeballThirdCircle {
+          min-width: 75%;
+          min-height: 75%;
+          position: absolute;
+          border-radius: 50%;
+          border: 4px solid;
+        }
+      }
+    }
+  }
+
+  .notFoundHeading {
+    font-size: clamp(1.8rem, 10vw, 2.5rem);
+  }
+
+  .notFoundText {
+    color: variables.$font-color-dark-grey;
+  }
+
+  .notFoundButton {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    cursor: pointer;
+    margin: 2rem 0;
+    min-width: 13rem;
+    width: 11%;
+    padding: 1rem;
+    border: none;
+    border-radius: 1.5rem;
+    color: variables.$white;
+    font-weight: 300;
+    font-family: variables.$poppins-font;
+    background-color: variables.$pokeball-red;
+    box-shadow: 0px 2px 5px variables.$search-box-shadow;
+  }
+
+  .pokeBallFirstCircle,
+  .pokeBallSecondCircle,
+  .pokeBallThirdCircle {
+    border-color: variables.$font-color;
+  }
+
+  .notFoundButton,
+  .notFoundText {
+    font-size: clamp(0.9rem, 20vw, 1.1rem);
+  }
+}

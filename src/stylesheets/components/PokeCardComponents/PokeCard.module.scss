@@ -1,0 +1,64 @@
+//SCSS Files
+@use '../../variables.scss' as variables;
+
+//PokeCard Styles
+.pokeCard {
+  height: 450px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  border-radius: 1.4rem;
+  padding: 1rem 1.5rem 1.5rem 1.5rem;
+  background-color: variables.$card-color;
+  border: 1px solid variables.$card-border-color;
+  box-shadow: 0px 3px 12px variables.$card-box-shadow;
+
+  .cardContainer {
+    position: relative;
+
+    .infoButton {
+      right: -5px;
+      font-size: 2.3rem;
+      top: 0;
+      z-index: 1;
+      cursor: pointer;
+      position: absolute;
+      color: variables.$font-color-medium-grey;
+    }
+
+    .pokeImg {
+      width: 90%;
+      image-rendering: pixelated;
+      filter: drop-shadow(3px 5px 2px variables.$search-box-shadow);
+    }
+
+    .pokeName {
+      font-size: 2.2rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      color: variables.$font-color;
+      text-transform: capitalize;
+    }
+  }
+}
+
+//PokeCard Animations
+.pokeImgAnimation {
+  animation: pokeAnimation 0.5s;
+}
+@keyframes pokeAnimation {
+  0% {
+    transform: rotate(15deg) scale(1.1, 1.1);
+  }
+  25% {
+    transform: rotate(-15deg) scale(1.1, 1.1);
+  }
+  50% {
+    transform: rotate(15deg) scale(1.1, 1.1);
+  }
+  100% {
+    transform: rotate(-15deg);
+  }
+}

@@ -1,0 +1,164 @@
+//SCSS Files
+@use '../../variables' as variables;
+
+//PokeSearchInput Styles
+.pokeSearchContainer {
+  position: relative;
+  width: 90%;
+  min-width: 300px;
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .searchInput {
+    width: 100%;
+    min-width: 300px;
+    font-size: 1.4rem;
+    padding-left: 1.5rem;
+    outline: none;
+    font-family: variables.$poppins-font;
+  }
+
+  .clearInputButton {
+    right: 15px;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    color: variables.$font-color-dark-grey;
+
+    .clearIcon {
+      font-size: 1.7rem;
+    }
+  }
+
+  .clearInputButton,
+  .searchInput {
+    z-index: 1;
+    height: 65px;
+    position: absolute;
+    border: none;
+    border-radius: 2rem;
+  }
+
+  .pokeSearchInfoWrapper {
+    width: 100%;
+    height: 65px;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    border-radius: 2rem;
+    background-color: variables.$card-color;
+    box-shadow: 0px 2px 5px variables.$search-box-shadow;
+
+    .pokeInfoWrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80%;
+      padding: 0.7rem 2rem 1rem;
+
+      .pokeImg {
+        width: 35%;
+        max-width: 210px;
+        image-rendering: pixelated;
+        filter: drop-shadow(3px 5px 2px variables.$search-box-shadow);
+      }
+    }
+    @media (max-width: 500px) {
+      .pokeInfoWrapper {
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 0.2rem;
+
+        .pokeImg {
+          min-width: 150px;
+          max-width: 150px;
+        }
+      }
+    }
+
+    .pokeNameWrapper {
+      height: 100%;
+      width: 33%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .pokeName {
+        font-size: clamp(1rem, 5vw, 2.6rem);
+        text-transform: uppercase;
+        text-align: center;
+      }
+
+      .tooBigPokeName {
+        font-size: clamp(1rem, 5vw, 2.2rem);
+      }
+      @media (max-width: 500px) {
+        .tooBigPokeName {
+          white-space: nowrap;
+        }
+      }
+    }
+
+    .pokedexButton {
+      border: 0;
+      cursor: pointer;
+      height: 92%;
+      width: 33%;
+      max-width: 19.5%;
+      border-radius: 1rem;
+      font-size: 1rem;
+      font-weight: 500;
+      color: variables.$white;
+      font-family: variables.$poppins-font;
+      background-color: variables.$pokeball-red;
+      box-shadow: 0px 2px 5px variables.$search-box-shadow;
+    }
+    @media (max-width: 500px) {
+      .pokedexButton {
+        max-width: 100%;
+        max-height: 15%;
+        width: 100%;
+      }
+    }
+  }
+
+  .pokeSearchErrContainer {
+    display: flex;
+    align-items: center;
+    color: variables.$pokeball-red;
+
+    .pokeSearchErrIcon {
+      font-size: 1.2rem;
+      margin-right: 0.2rem;
+    }
+
+    .pokeSearchErrText {
+      font-size: 1.1rem;
+    }
+  }
+
+  .pokeSearchErrShow {
+    opacity: 1;
+    margin-top: 0.8rem;
+    transition: ease 0.2s;
+  }
+
+  .pokeSearchErrHide {
+    opacity: 0;
+    transition: ease 0.2s;
+  }
+
+  .pokeSearchShowAnimation {
+    height: 325px;
+    transition: 0.2s ease-in-out;
+  }
+
+  .pokeSearchHideAnimation {
+    height: 65px;
+    transition: 0.2s ease-in-out;
+  }
+}

@@ -1,0 +1,14 @@
+//SCSS Files
+@use './variables' as variables;
+
+//Global Styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  body {
+    color: variables.$font-color;
+    font-family: variables.$poppins-font;
+    background-color: variables.$body-color;
+  }
+}
