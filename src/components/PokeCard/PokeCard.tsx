@@ -11,7 +11,7 @@ import styles from '../../stylesheets/components/PokeCardComponents/PokeCard.mod
 export const PokeCard: React.FC<{ pokeData: PokeStatsInfo }> = ({
   pokeData: { name, id, sprites, height, weight, stats },
 }) => {
-  const [isAnimationPlaying, setIsAnimationPlaying] = useState<boolean>(false);
+  const [isAudioPlaying, setIsAudioPlaying] = useState<boolean>(false);
 
   const navigate = useNavigate();
 
@@ -21,19 +21,11 @@ export const PokeCard: React.FC<{ pokeData: PokeStatsInfo }> = ({
         <PokeSounds
           pokeId={id}
           pokeName={name}
-          isPokeSound={isAnimationPlaying}
-          setIsPokeSound={setIsAnimationPlaying}
+          isPokeSound={isAudioPlaying}
+          setIsPokeSound={setIsAudioPlaying}
         />
         <Info onClick={() => navigate(`/pokemon/${name}`)} className={styles.infoButton} />
-        <img
-          src={sprites?.front_default}
-          alt={name}
-          className={
-            isAnimationPlaying
-              ? `${styles.pokeImg} ${styles.pokeImgAnimation}`
-              : `${styles.pokeImg}`
-          }
-        />
+        <img src={sprites?.front_default} alt={name} className={styles.pokeImg} />
         <h3 className={styles.pokeName}>{name}</h3>
       </div>
       <CardStats height={height} weight={weight} stats={stats} />

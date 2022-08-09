@@ -7,7 +7,7 @@ import { LoadingComponent } from '../components/LoadingComponent';
 import { EvolutionChain } from '../components/PokePage/EvolutionChain';
 import { PokeVarieties } from '../components/PokePage/PokeVarieties';
 import { PokeSearchInput } from '../components/PokeSearch/PokeSearchInput';
-import { PokeInfoContainer } from '../components/PokePage/PokeInfoContainer';
+import { PokeInfo } from '../components/PokePage/PokeInfo';
 
 import styles from '../stylesheets/pages/PokePage.module.scss';
 
@@ -53,7 +53,7 @@ export const PokePage: React.FC = () => {
         <PokeSearchInput />
       </div>
       <div className={styles.pokeInfoWrapper}>
-        <PokeInfoContainer
+        <PokeInfo
           choosenPokemonStats={currentPokeStats}
           choosenpokemonDetails={currentPokeDetails}
         />

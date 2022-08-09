@@ -10,16 +10,16 @@ import { PokeSpeciesInfo } from '../../interfaces/PokeSpeciesInfo';
 
 import styles from '../../stylesheets/components/PokePageComponents/PokeInfoContainer.module.scss';
 
-type PokeInfoContainerProps = {
+type PokeInfoProps = {
   choosenPokemonStats: PokeStatsInfo;
   choosenpokemonDetails: PokeSpeciesInfo;
 };
 
-export const PokeInfoContainer: React.FC<PokeInfoContainerProps> = ({
+export const PokeInfo: React.FC<PokeInfoProps> = ({
   choosenPokemonStats,
   choosenpokemonDetails,
 }) => {
-  const [isAnimationPlaying, setIsAnimationPlaying] = useState<boolean>(false);
+  const [isAudioPlaying, setIsAudioPlaying] = useState<boolean>(false);
 
   const navigate = useNavigate();
 
@@ -69,8 +69,8 @@ export const PokeInfoContainer: React.FC<PokeInfoContainerProps> = ({
           <PokeSounds
             pokeId={choosenPokemonStats?.id}
             pokeName={choosenPokemonStats?.name}
-            isPokeSound={isAnimationPlaying}
-            setIsPokeSound={setIsAnimationPlaying}
+            isPokeSound={isAudioPlaying}
+            setIsPokeSound={setIsAudioPlaying}
           />
           <h1
             className={changePokeNameFontSize}
