@@ -23,7 +23,8 @@ export const PokeInfo: React.FC<PokeInfoProps> = ({
 
   const navigate = useNavigate();
 
-  const lastPokeID = 898;
+  const LAST_POKE_ID = 898;
+  const FIRST_POKE_ID = 1;
   const pokeGeneration = choosenpokemonDetails?.generation.name;
 
   const changePokeNameFontSize =
@@ -87,13 +88,13 @@ export const PokeInfo: React.FC<PokeInfoProps> = ({
               .flavor_text
           }
         </p>
-        {1 < choosenPokemonStats?.id && (
+        {FIRST_POKE_ID < choosenPokemonStats?.id && (
           <NavigateBefore
             onClick={() => navigate(`/pokemon/${choosenPokemonStats?.id - 1}`, { replace: true })}
             className={`${styles.searchBar_navigationButton} ${styles.navigationButtonLeft}`}
           />
         )}
-        {lastPokeID > choosenPokemonStats?.id && (
+        {LAST_POKE_ID > choosenPokemonStats?.id && (
           <NavigateNext
             onClick={() => navigate(`/pokemon/${choosenPokemonStats?.id + 1}`, { replace: true })}
             className={`${styles.searchBar_navigationButton} ${styles.navigationButtonRight}`}

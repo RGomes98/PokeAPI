@@ -47,12 +47,12 @@ export const PokeVarieties: React.FC<PokeVarietiesProps> = ({
           />
         )}
         {pokemonVarieties.slice(isChoosenPokeMega).map(({ pokemon: { name, url } }, idx) => {
-          const DEFAULT_POKE_SPRITE_TO_SHINY =
+          const defaultPokeSpriteToShiny =
             name === pokemonVarieties[isChoosenPokeMega].pokemon.name
               ? `${pokeSpritesURL}shiny/${url.split('/').at(-2)}.png`
               : `${pokeSpritesURL}${url.split('/').at(-2)}.png`;
 
-          const DEFAULT_POKE_NAME_TO_SHINY =
+          const defaultPokeNameToShiny =
             name === pokemonVarieties[isChoosenPokeMega].pokemon.name ? `${name}-shiny` : name;
 
           return (
@@ -64,11 +64,11 @@ export const PokeVarieties: React.FC<PokeVarietiesProps> = ({
               }
               key={idx}
             >
-              <h3 className={styles.pokeVariationName_heading}>{DEFAULT_POKE_NAME_TO_SHINY}</h3>
+              <h3 className={styles.pokeVariationName_heading}>{defaultPokeNameToShiny}</h3>
               <img
                 className={styles.pokeVariation_img}
-                src={`${DEFAULT_POKE_SPRITE_TO_SHINY}`}
-                alt={DEFAULT_POKE_NAME_TO_SHINY}
+                src={defaultPokeSpriteToShiny}
+                alt={defaultPokeNameToShiny}
               />
             </div>
           );

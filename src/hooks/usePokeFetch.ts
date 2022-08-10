@@ -13,10 +13,10 @@ type usePokeAPIReturn = {
 export const usePokeFetch = (): usePokeAPIReturn => {
   const [isPokeAPILoading, setIsPokeAPILoading] = useState<boolean>(false);
 
-  const pokeFetchLimiter = 9;
-  const offsetIncrement = 20;
-  const pokeDataMaxSize = 820;
-  const pokeOffsetMaxSize = 780;
+  const OFFSET_INCREMENT = 20;
+  const POKE_FETCH_LIMITER = 9;
+  const POKE_DATA_MAX_SIZE = 820;
+  const POKE_OFFSET_MAX_SIZE = 780;
 
   const {
     pokeLimit,
@@ -28,11 +28,11 @@ export const usePokeFetch = (): usePokeAPIReturn => {
   } = usePokeAPIContext();
 
   const getPokes = async (): Promise<void> => {
-    if (pokeOffset === pokeDataMaxSize) {
+    if (pokeOffset === POKE_DATA_MAX_SIZE) {
       return setIsInfiniteScrollActive(false);
     }
 
-    pokeOffset === pokeOffsetMaxSize && setPokelimit(pokeFetchLimiter);
+    pokeOffset === POKE_OFFSET_MAX_SIZE && setPokelimit(POKE_FETCH_LIMITER);
 
     setIsPokeAPILoading(true);
     try {
@@ -46,7 +46,7 @@ export const usePokeFetch = (): usePokeAPIReturn => {
         })
       );
       setIsPokeAPILoading(false);
-      setPokeOffset((prev) => prev + offsetIncrement);
+      setPokeOffset((prev) => prev + OFFSET_INCREMENT);
       setPokeData((prev) => [...prev, ...pokePromise]);
     } catch (err) {
       setIsPokeAPILoading(false);

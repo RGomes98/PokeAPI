@@ -85,8 +85,13 @@ export const usePokeDetails = (): usePokeDetailsReturn => {
 
       const { varieties: selectedPokeVarieties } = selectedPokeDetails;
 
+      const cleanedPokeVarieties = selectedPokeVarieties.filter((poke) => {
+        if (!poke.pokemon.name.includes('totem')) return poke;
+        return false;
+      });
+
       setPokeDetails([selectedPokeDetails]);
-      setPokeVarieties(selectedPokeVarieties);
+      setPokeVarieties(cleanedPokeVarieties);
       setPokeEvolutions(selectedPokeEvolutionChain);
       setIsPokeDetailsLoading(false);
     } catch (err) {

@@ -10,7 +10,7 @@ type CardStatsProps = {
 };
 
 export const CardStats: React.FC<CardStatsProps> = ({ height, weight, stats }) => {
-  const unitFormula = 10;
+  const UNIT_FORMULA = 10;
   const cardStatStyles = `${styles.statsWrapper} ${pokeInfoStyles.statsWrapper}`;
   const cardUnitNameStyles = `${styles.statsUnitName} ${pokeInfoStyles.statsUnitName}`;
   const statsContainerStyles = `${styles.statsContainer} ${pokeInfoStyles.statsContainer}`;
@@ -37,14 +37,14 @@ export const CardStats: React.FC<CardStatsProps> = ({ height, weight, stats }) =
       })}
       <div className={cardStatStyles}>
         <span className={cardUnitNumberStyles}>
-          {height / unitFormula}
+          {height / UNIT_FORMULA}
           <span className={cardUnitDisplayStyles}>m</span>
         </span>
         <p className={cardUnitNameStyles}>HEIGHT</p>
       </div>
       <div className={cardStatStyles}>
         <span className={cardUnitNumberStyles}>
-          {(weight / unitFormula).toFixed(1)}
+          {(weight / UNIT_FORMULA).toFixed(1)}
           <span className={cardUnitDisplayStyles}>kg</span>
         </span>
         <p className={cardUnitNameStyles}>WEIGHT</p>

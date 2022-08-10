@@ -16,7 +16,7 @@ export const PokeSearchInput = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
-  const onlyAtPokePageSearch = pathname !== '/' && true;
+  const onlyAtPokePageSearchBar = pathname !== '/' && true;
 
   const changePokeNameFontSize =
     pokeSearchResponse?.name.length! > 8
@@ -61,7 +61,7 @@ export const PokeSearchInput = () => {
             onClick={() => {
               setPokeSearch('');
               navigate(`/pokemon/${pokeSearchResponse?.name}`, {
-                replace: onlyAtPokePageSearch,
+                replace: onlyAtPokePageSearchBar,
               });
             }}
             className={styles.pokedexButton}

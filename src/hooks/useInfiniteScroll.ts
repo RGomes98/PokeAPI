@@ -16,7 +16,7 @@ export const useInfiniteScroll = (options: useInfiniteScrollOptions): useInfinit
   const infiniteScrollRef = useRef<HTMLImageElement>(null);
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
-  const observerDelay = 100;
+  const OBSERVER_DELAY = 100;
 
   const observerCallback = (entries: IntersectionObserverEntry[]) => {
     const [entry] = entries;
@@ -24,14 +24,16 @@ export const useInfiniteScroll = (options: useInfiniteScrollOptions): useInfinit
   };
 
   useEffect(() => {
-    setTimeout(() => {
+    const delay = setTimeout(() => {
       const observer = new IntersectionObserver(observerCallback, options);
       if (infiniteScrollRef.current) observer.observe(infiniteScrollRef.current);
 
       return () => {
         if (infiniteScrollRef.current) observer.unobserve(infiniteScrollRef.current);
       };
-    }, observerDelay);
+    }, OBSERVER_DELAY);
+
+    return () => clearTimeout(delay);
   }, [options]);
 
   return { infiniteScrollRef, isVisible, setIsVisible };
