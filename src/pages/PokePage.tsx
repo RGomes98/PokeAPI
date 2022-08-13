@@ -30,7 +30,7 @@ export const PokePage: React.FC = () => {
   const [currentPokeDetails] = pokeDetails;
 
   const notMatchingPokeStatsAndParams = isNaN(+pokeName!)
-    ? pokeName?.toLocaleLowerCase() !== currentPokeStats?.name
+    ? pokeName?.toLowerCase() !== currentPokeStats?.name
     : parseInt(pokeName!) !== currentPokeStats?.id;
 
   const notMatchingPokeStatsAndDetails =

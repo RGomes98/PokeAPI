@@ -67,11 +67,8 @@ export const usePokeDetails = (): usePokeDetailsReturn => {
       const getEvolutionChain = (obj: Chain): void => {
         for (let val in obj) {
           if (val === 'evolves_to') {
-            if (obj[val]?.length === 1) {
-              getEvolutionChain(obj[val][0]);
-            }
-            if (obj[val]?.length >= 2) {
-              obj[val]?.map((pokeChain) => {
+            if (obj[val]?.length) {
+              obj[val]?.forEach((pokeChain) => {
                 return getEvolutionChain(pokeChain);
               });
             }
@@ -86,7 +83,7 @@ export const usePokeDetails = (): usePokeDetailsReturn => {
       const { varieties: selectedPokeVarieties } = selectedPokeDetails;
 
       const cleanedPokeVarieties = selectedPokeVarieties.filter((poke) => {
-        if (!poke.pokemon.name.includes('totem')) return poke;
+        if (!poke.pokemon.name.includes('-totem')) return poke;
         return false;
       });
 

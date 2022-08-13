@@ -31,8 +31,10 @@ export const usePokeSearch = (pokeName: string | undefined): usePokeSearchType =
             },
           }
         );
-        setIsPokeSearchErr(false);
-        setPokeSearchResponse(pokeResponse);
+        if (pokeResponse?.name) {
+          setIsPokeSearchErr(false);
+          setPokeSearchResponse(pokeResponse);
+        }
       } catch (err: unknown) {
         if (err instanceof Error) {
           err.name === 'AxiosError' && setIsPokeSearchErr(true);
