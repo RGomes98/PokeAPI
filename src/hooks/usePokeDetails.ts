@@ -84,10 +84,10 @@ export const usePokeDetails = (): usePokeDetailsReturn => {
 
       const cleanedPokeVarieties = selectedPokeVarieties.filter((poke) => {
         const isNotFiltered =
+          !poke.pokemon.name.includes('-cap') &&
           !poke.pokemon.name.includes('-totem') &&
           !poke.pokemon.name.includes('-hisui') &&
-          !poke.pokemon.name.includes('-starter') &&
-          !poke.pokemon.name.includes('-world-cap');
+          !poke.pokemon.name.includes('-starter');
 
         if (isNotFiltered) return poke;
         return false;
