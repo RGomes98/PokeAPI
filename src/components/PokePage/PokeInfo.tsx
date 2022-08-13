@@ -94,7 +94,7 @@ export const PokeInfo: React.FC<PokeInfoProps> = ({
             className={`${styles.searchBar_navigationButton} ${styles.navigationButtonLeft}`}
           />
         )}
-        {LAST_POKE_ID > choosenPokemonStats?.id && (
+        {LAST_POKE_ID !== choosenPokemonStats?.id && (
           <NavigateNext
             onClick={() => navigate(`/pokemon/${choosenPokemonStats?.id + 1}`, { replace: true })}
             className={`${styles.searchBar_navigationButton} ${styles.navigationButtonRight}`}
