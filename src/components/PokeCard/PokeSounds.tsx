@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { PlayCircle } from '@mui/icons-material';
 
 import pokeSoundsExports from '../../data/pokeSoundsExports';
@@ -18,10 +19,12 @@ export const PokeSounds: React.FC<PokeSoundsProps> = ({
   isPokeSound,
   setIsPokeSound,
 }) => {
+  const pokeSoundRef = useRef<HTMLAudioElement>(null);
+
   const pokeSoundCooldown = (): void => {
     if (!isPokeSound) {
       setIsPokeSound(true);
-      new Audio(pokeSoundsExports[pokeName]).play();
+      pokeSoundRef?.current?.play();
       setTimeout(() => setIsPokeSound(false), 1000);
     }
   };
@@ -34,10 +37,13 @@ export const PokeSounds: React.FC<PokeSoundsProps> = ({
   return (
     <div className={soundPlayerContainerStyles}>
       {kantoPokesID && (
-        <PlayCircle
-          onClick={pokeSoundCooldown}
-          className={isPokeSound ? soundPlayerActiveStyles : soundPlayerInactiveStyles}
-        />
+        <>
+          <PlayCircle
+            onClick={pokeSoundCooldown}
+            className={isPokeSound ? soundPlayerActiveStyles : soundPlayerInactiveStyles}
+          />
+          <audio ref={pokeSoundRef} src={pokeSoundsExports[pokeName]} preload='auto' />
+        </>
       )}
     </div>
   );

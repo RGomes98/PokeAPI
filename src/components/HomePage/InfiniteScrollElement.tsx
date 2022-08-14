@@ -4,8 +4,8 @@ import loadingSpinner from '../../assets/svg/loadingSpinner.svg';
 import styles from '../../stylesheets/components/HomePageComponents/InfiniteScrollElement.module.scss';
 
 type InfiniteScrollElementProps = {
-  infiniteRef: React.RefObject<HTMLImageElement>;
   isPokesLoading: boolean;
+  infiniteRef: React.RefObject<HTMLImageElement>;
 };
 
 export const InfiniteScrollElement: React.FC<InfiniteScrollElementProps> = ({
