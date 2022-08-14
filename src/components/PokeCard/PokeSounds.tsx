@@ -19,13 +19,14 @@ export const PokeSounds: React.FC<PokeSoundsProps> = ({
   isPokeSound,
   setIsPokeSound,
 }) => {
+  const POKE_SOUND_DELAY = 1500;
   const pokeSoundRef = useRef<HTMLAudioElement>(null);
 
   const pokeSoundCooldown = (): void => {
     if (!isPokeSound) {
       setIsPokeSound(true);
       pokeSoundRef?.current?.play();
-      setTimeout(() => setIsPokeSound(false), 1000);
+      setTimeout(() => setIsPokeSound(false), POKE_SOUND_DELAY);
     }
   };
 
