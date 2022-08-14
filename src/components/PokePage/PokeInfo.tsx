@@ -27,11 +27,6 @@ export const PokeInfo: React.FC<PokeInfoProps> = ({
   const FIRST_POKE_ID = 1;
   const pokeGeneration = choosenpokemonDetails?.generation.name;
 
-  const changePokeNameFontSize =
-    choosenPokemonStats?.name.length >= 10
-      ? `${styles.pokeInfoName} ${styles.tooBigPokeName}`
-      : styles.pokeInfoName;
-
   const flavorTextSelector = (generation: string) => {
     switch (generation) {
       case 'generation-i':
@@ -74,7 +69,7 @@ export const PokeInfo: React.FC<PokeInfoProps> = ({
             setIsPokeSound={setIsAudioPlaying}
           />
           <h1
-            className={changePokeNameFontSize}
+            className={styles.pokeInfoName}
           >{`#.${choosenpokemonDetails?.id} ${choosenPokemonStats?.name}`}</h1>
         </div>
         <img
