@@ -22,13 +22,15 @@
       display: flex;
       justify-content: center;
       font-weight: 400;
+      font-size: 1.05rem;
 
       .statsUnitDisplay {
         color: variables.$font-color-dark-grey;
+        font-weight: 300;
       }
     }
     .statsUnitName {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       font-weight: 400;
       color: variables.$font-color-dark-grey;
       border-top: 1px solid variables.$font-color-grey;
