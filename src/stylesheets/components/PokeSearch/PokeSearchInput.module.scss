@@ -88,16 +88,15 @@
       align-items: center;
 
       .pokeName {
-        font-size: clamp(1rem, 5vw, 2.6rem);
+        font-size: clamp(2rem, 3vw, 2.5rem);
         text-transform: uppercase;
         text-align: center;
       }
-
       .tooBigPokeName {
         font-size: clamp(1rem, 5vw, 2.2rem);
       }
       @media (max-width: 500px) {
-        .tooBigPokeName {
+        .pokeName {
           white-space: nowrap;
         }
       }

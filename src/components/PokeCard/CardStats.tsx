@@ -11,6 +11,7 @@ type CardStatsProps = {
 
 export const CardStats: React.FC<CardStatsProps> = ({ height, weight, stats }) => {
   const UNIT_FORMULA = 10;
+
   const cardStatStyles = `${styles.statsWrapper} ${pokeInfoStyles.statsWrapper}`;
   const cardUnitNameStyles = `${styles.statsUnitName} ${pokeInfoStyles.statsUnitName}`;
   const statsContainerStyles = `${styles.statsContainer} ${pokeInfoStyles.statsContainer}`;
@@ -20,7 +21,7 @@ export const CardStats: React.FC<CardStatsProps> = ({ height, weight, stats }) =
   return (
     <div className={statsContainerStyles}>
       {stats?.map(({ base_stat, stat: { name } }, idx) => {
-        const changeStatsNames =
+        const changedStatsNames =
           (name === 'hp' && 'HP') ||
           (name === 'speed' && 'SPD') ||
           (name === 'attack' && 'ATT') ||
@@ -31,7 +32,7 @@ export const CardStats: React.FC<CardStatsProps> = ({ height, weight, stats }) =
         return (
           <div className={cardStatStyles} key={idx}>
             <span className={cardUnitNumberStyles}>{base_stat}</span>
-            <p className={cardUnitNameStyles}>{changeStatsNames}</p>
+            <p className={cardUnitNameStyles}>{changedStatsNames}</p>
           </div>
         );
       })}

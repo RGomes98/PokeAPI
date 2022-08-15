@@ -19,9 +19,7 @@ export const PokeVarieties: React.FC<PokeVarietiesProps> = ({
 
   const isChoosenPokeMega = choosenPokemonStats?.name.includes('-mega') ? 1 : 0;
   const varietiesLength = pokemonVarieties.slice(isChoosenPokeMega).length - 1;
-
-  const pokeSpritesURL =
-    'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
+  const pokeSpriteURL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
 
   const handleVariations = (action: string): void => {
     if (action === 'NEXT')
@@ -49,8 +47,8 @@ export const PokeVarieties: React.FC<PokeVarietiesProps> = ({
         {pokemonVarieties.slice(isChoosenPokeMega).map(({ pokemon: { name, url } }, idx) => {
           const defaultPokeSpriteToShiny =
             name === pokemonVarieties[isChoosenPokeMega].pokemon.name
-              ? `${pokeSpritesURL}shiny/${url.split('/').at(-2)}.png`
-              : `${pokeSpritesURL}${url.split('/').at(-2)}.png`;
+              ? `${pokeSpriteURL}shiny/${url.split('/').at(-2)}.png`
+              : `${pokeSpriteURL}${url.split('/').at(-2)}.png`;
 
           const defaultPokeNameToShiny =
             name === pokemonVarieties[isChoosenPokeMega].pokemon.name ? `${name}-shiny` : name;

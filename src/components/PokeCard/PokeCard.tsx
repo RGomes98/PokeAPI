@@ -5,15 +5,16 @@ import { useNavigate } from 'react-router-dom';
 import { CardStats } from './CardStats';
 import { PokeSounds } from './PokeSounds';
 import { PokeStatsInfo } from '../../interfaces/PokeStatsInfo';
+import { usePokeAPIContext } from '../../context/PokeAPIContext';
 
 import styles from '../../stylesheets/components/PokeCardComponents/PokeCard.module.scss';
 
 export const PokeCard: React.FC<{ pokeData: PokeStatsInfo }> = ({
   pokeData: { name, id, sprites, height, weight, stats },
 }) => {
-  const [isAudioPlaying, setIsAudioPlaying] = useState<boolean>(false);
-
   const navigate = useNavigate();
+  const { setHomePageScrollYPosition } = usePokeAPIContext();
+  const [isAudioPlaying, setIsAudioPlaying] = useState<boolean>(false);
 
   return (
     <div className={styles.pokeCard}>
@@ -24,7 +25,13 @@ export const PokeCard: React.FC<{ pokeData: PokeStatsInfo }> = ({
           isPokeSound={isAudioPlaying}
           setIsPokeSound={setIsAudioPlaying}
         />
-        <Info onClick={() => navigate(`/pokemon/${name}`)} className={styles.infoButton} />
+        <Info
+          onClick={() => {
+            navigate(`/pokemon/${name}`);
+            setHomePageScrollYPosition(window.scrollY);
+          }}
+          className={styles.infoButton}
+        />
         <img src={sprites?.front_default} alt={name} className={styles.pokeImg} />
         <h3 className={styles.pokeName}>{name}</h3>
       </div>

@@ -4,24 +4,24 @@ import { Clear, ErrorOutlineOutlined } from '@mui/icons-material';
 
 import { PokeTypes } from './PokeTypes';
 import { usePokeSearch } from '../../hooks/usePokeSearch';
+import { usePokeAPIContext } from '../../context/PokeAPIContext';
 
 import pokePageStyles from '../../stylesheets/pages/PokePage.module.scss';
 import styles from '../../stylesheets/components/PokeSearch/PokeSearchInput.module.scss';
 
 export const PokeSearchInput = () => {
-  const [pokeSearch, setPokeSearch] = useState('');
-
-  const { pokeSearchResponse, isPokeSearchErr } = usePokeSearch(pokeSearch);
-
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const { setHomePageScrollYPosition } = usePokeAPIContext();
 
-  const onlyAtPokePageSearchBar = pathname !== '/' && true;
+  const [pokeSearch, setPokeSearch] = useState('');
+  const { pokeSearchResponse, isPokeSearchErr } = usePokeSearch(pokeSearch);
 
-  const changePokeNameFontSize =
-    pokeSearchResponse?.name.length! > 8
-      ? `${styles.pokeName} ${styles.tooBigPokeName}`
-      : styles.pokeName;
+  const atHomePage = pathname === '/';
+
+  const changePokeNameFontSize = pokeSearchResponse?.name.includes('-')
+    ? `${styles.pokeName} ${styles.tooBigPokeName}`
+    : styles.pokeName;
 
   const showPokeErrAnimation = isPokeSearchErr
     ? `${styles.pokeSearchErrShow} ${styles.pokeSearchErrContainer}`
@@ -60,8 +60,9 @@ export const PokeSearchInput = () => {
           <button
             onClick={() => {
               setPokeSearch('');
+              atHomePage && setHomePageScrollYPosition(window.scrollY);
               navigate(`/pokemon/${pokeSearchResponse?.name}`, {
-                replace: onlyAtPokePageSearchBar,
+                replace: atHomePage ? false : true,
               });
             }}
             className={styles.pokedexButton}

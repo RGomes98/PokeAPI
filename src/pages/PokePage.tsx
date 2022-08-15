@@ -12,8 +12,8 @@ import { PokeInfo } from '../components/PokePage/PokeInfo';
 import styles from '../stylesheets/pages/PokePage.module.scss';
 
 export const PokePage: React.FC = () => {
-  const { pokeName } = useParams();
   const navigate = useNavigate();
+  const { pokeName } = useParams();
 
   const {
     getPokeStats,

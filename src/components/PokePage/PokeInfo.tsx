@@ -19,12 +19,11 @@ export const PokeInfo: React.FC<PokeInfoProps> = ({
   choosenPokemonStats,
   choosenpokemonDetails,
 }) => {
+  const navigate = useNavigate();
   const [isAudioPlaying, setIsAudioPlaying] = useState<boolean>(false);
 
-  const navigate = useNavigate();
-
-  const LAST_POKE_ID = 898;
   const FIRST_POKE_ID = 1;
+  const LAST_POKE_ID = 898;
   const pokeGeneration = choosenpokemonDetails?.generation.name;
 
   const flavorTextSelector = (generation: string) => {

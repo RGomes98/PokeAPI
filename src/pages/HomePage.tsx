@@ -12,7 +12,7 @@ import pokeLogo from '../assets/svg/pokemonLogo.svg';
 import styles from '../stylesheets/pages/HomePage.module.scss';
 
 export const HomePage: React.FC = () => {
-  const { pokeData } = usePokeAPIContext();
+  const { pokeData, homePageScrollYPosition } = usePokeAPIContext();
 
   const { getPokes, isPokeAPILoading } = usePokeFetch();
 
@@ -29,6 +29,10 @@ export const HomePage: React.FC = () => {
       getPokes();
     }
   });
+
+  useEffect(() => {
+    window.scrollTo(0, homePageScrollYPosition);
+  }, [homePageScrollYPosition]);
 
   return (
     <div className={styles.homePage}>

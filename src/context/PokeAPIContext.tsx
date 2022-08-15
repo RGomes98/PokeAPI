@@ -7,9 +7,11 @@ type PokeContext = {
   pokeOffset: number;
   pokeData: PokeStatsInfo[];
   isInfiniteScrollActive: boolean;
+  homePageScrollYPosition: number;
   setPokelimit: React.Dispatch<React.SetStateAction<number>>;
   setPokeOffset: React.Dispatch<React.SetStateAction<number>>;
   setPokeData: React.Dispatch<React.SetStateAction<PokeStatsInfo[]>>;
+  setHomePageScrollYPosition: React.Dispatch<React.SetStateAction<number>>;
   setIsInfiniteScrollActive: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
@@ -22,6 +24,7 @@ export const PokeAPIContextProvider: React.FC<{ children: React.ReactNode }> = (
   const [pokeLimit, setPokelimit] = useState<number>(20);
   const [pokeOffset, setPokeOffset] = useState<number>(0);
   const [pokeData, setPokeData] = useState<PokeStatsInfo[]>([]);
+  const [homePageScrollYPosition, setHomePageScrollYPosition] = useState<number>(0);
   const [isInfiniteScrollActive, setIsInfiniteScrollActive] = useState<boolean>(true);
 
   return (
@@ -31,10 +34,12 @@ export const PokeAPIContextProvider: React.FC<{ children: React.ReactNode }> = (
         setPokelimit,
         setPokeOffset,
         setIsInfiniteScrollActive,
+        setHomePageScrollYPosition,
         pokeData,
         pokeLimit,
         pokeOffset,
         isInfiniteScrollActive,
+        homePageScrollYPosition,
       }}
     >
       {children}

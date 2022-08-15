@@ -11,8 +11,7 @@ type EvolutionChainProps = {
 export const EvolutionChain: React.FC<EvolutionChainProps> = ({ pokemonChain }) => {
   const navigate = useNavigate();
 
-  const pokeSpritesURL =
-    'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
+  const pokeSpriteURL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
 
   return (
     <div className={styles.evolutionChainContainer}>
@@ -28,7 +27,7 @@ export const EvolutionChain: React.FC<EvolutionChainProps> = ({ pokemonChain }) 
               <img
                 className={styles.evolutionChainImg}
                 alt={name}
-                src={`${pokeSpritesURL}${url.split('/').at(-2)}.png`}
+                src={`${pokeSpriteURL}${url.split('/').at(-2)}.png`}
               />
               <h3 className={styles.evolutionChainName}>{name}</h3>
             </div>

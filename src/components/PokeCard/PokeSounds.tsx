@@ -20,7 +20,13 @@ export const PokeSounds: React.FC<PokeSoundsProps> = ({
   setIsPokeSound,
 }) => {
   const POKE_SOUND_DELAY = 1500;
+  const kantoPokesID = pokeId <= 151;
+
   const pokeSoundRef = useRef<HTMLAudioElement>(null);
+
+  const soundPlayerInactiveStyles = `${styles.playButton} ${pokeInfoStyles.playButton}`;
+  const soundPlayerContainerStyles = `${styles.soundPlayerContainer} ${pokeInfoStyles.soundPlayerContainer}`;
+  const soundPlayerActiveStyles = `${styles.playButton} ${pokeInfoStyles.playButton}  ${styles.activePlayButton}`;
 
   const pokeSoundCooldown = (): void => {
     if (!isPokeSound) {
@@ -29,11 +35,6 @@ export const PokeSounds: React.FC<PokeSoundsProps> = ({
       setTimeout(() => setIsPokeSound(false), POKE_SOUND_DELAY);
     }
   };
-
-  const kantoPokesID = pokeId <= 151;
-  const soundPlayerInactiveStyles = `${styles.playButton} ${pokeInfoStyles.playButton}`;
-  const soundPlayerContainerStyles = `${styles.soundPlayerContainer} ${pokeInfoStyles.soundPlayerContainer}`;
-  const soundPlayerActiveStyles = `${styles.playButton} ${pokeInfoStyles.playButton}  ${styles.activePlayButton}`;
 
   return (
     <div className={soundPlayerContainerStyles}>

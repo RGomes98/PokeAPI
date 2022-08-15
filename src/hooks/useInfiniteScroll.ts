@@ -13,10 +13,10 @@ type useInfiniteScrollOptions = {
 };
 
 export const useInfiniteScroll = (options: useInfiniteScrollOptions): useInfiniteScrollReturn => {
-  const infiniteScrollRef = useRef<HTMLImageElement>(null);
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
   const OBSERVER_DELAY = 100;
+  const infiniteScrollRef = useRef<HTMLImageElement>(null);
 
   const observerCallback = (entries: IntersectionObserverEntry[]) => {
     const [entry] = entries;
