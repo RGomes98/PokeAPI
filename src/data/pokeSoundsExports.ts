@@ -87,7 +87,7 @@ const pokeSounds: pokeSoundsInterface = {
   mew: require('../assets/sounds/Mew.wav'),
   mewtwo: require('../assets/sounds/Mewtwo.wav'),
   moltres: require('../assets/sounds/Moltres.wav'),
-  'mr-Mime': require('../assets/sounds/Mr-Mime.wav'),
+  'mr-mime': require('../assets/sounds/Mr-Mime.wav'),
   muk: require('../assets/sounds/Muk.wav'),
   nidoking: require('../assets/sounds/Nidoking.wav'),
   nidoqueen: require('../assets/sounds/Nidoqueen.wav'),
