@@ -46,7 +46,7 @@ export const PokePage: React.FC = () => {
   ) : (
     <div className={styles.pokePageContainer}>
       <div className={styles.searchBarWrapper}>
-        <button className={styles.homeButton} onClick={() => navigate('/')}>
+        <button className={styles.homeButton} onClick={() => navigate('/', { replace: true })}>
           <ArrowBack className={styles.arrowIcon} />
           Home
         </button>

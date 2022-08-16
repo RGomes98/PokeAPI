@@ -40,6 +40,14 @@
       margin-bottom: 1rem;
       color: variables.$font-color;
       text-transform: capitalize;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .tooBigPokeName {
+      font-size: 1.5rem;
+      white-space: nowrap;
     }
   }
 }

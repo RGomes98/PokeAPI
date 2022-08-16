@@ -26,6 +26,11 @@ export const PokeInfo: React.FC<PokeInfoProps> = ({
   const LAST_POKE_ID = 898;
   const pokeGeneration = choosenpokemonDetails?.generation.name;
 
+  const pokeNameStyles =
+    choosenPokemonStats?.name.includes('-') && choosenPokemonStats?.name.length > 10
+      ? `${styles.pokeInfoName} ${styles.tooBigpokeInfoName}`
+      : styles.pokeInfoName;
+
   const flavorTextSelector = (generation: string) => {
     switch (generation) {
       case 'generation-i':
@@ -62,13 +67,13 @@ export const PokeInfo: React.FC<PokeInfoProps> = ({
       <div className={styles.pokeInfoWrapper}>
         <div className={styles.pokeInfoHeading}>
           <PokeSounds
-            pokeId={choosenPokemonStats?.id}
+            pokeID={choosenPokemonStats?.id}
             pokeName={choosenPokemonStats?.name}
             isPokeSound={isAudioPlaying}
             setIsPokeSound={setIsAudioPlaying}
           />
           <h1
-            className={styles.pokeInfoName}
+            className={pokeNameStyles}
           >{`#.${choosenpokemonDetails?.id} ${choosenPokemonStats?.name}`}</h1>
         </div>
         <img

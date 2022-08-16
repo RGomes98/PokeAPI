@@ -17,4 +17,10 @@
     transition: ease-out;
     fill: variables.$pokeball-red;
   }
+
+  .disabledPlayButton {
+    opacity: 0.25;
+    cursor: default;
+    fill: variables.$pokeball-red;
+  }
 }

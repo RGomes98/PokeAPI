@@ -16,11 +16,16 @@ export const PokeCard: React.FC<{ pokeData: PokeStatsInfo }> = ({
   const { setHomePageScrollYPosition } = usePokeAPIContext();
   const [isAudioPlaying, setIsAudioPlaying] = useState<boolean>(false);
 
+  const pokeNameStyles =
+    name?.includes('-') && name?.length > 10
+      ? `${styles.pokeName} ${styles.tooBigPokeName}`
+      : styles.pokeName;
+
   return (
     <div className={styles.pokeCard}>
       <div className={styles.cardContainer}>
         <PokeSounds
-          pokeId={id}
+          pokeID={id}
           pokeName={name}
           isPokeSound={isAudioPlaying}
           setIsPokeSound={setIsAudioPlaying}
@@ -33,7 +38,7 @@ export const PokeCard: React.FC<{ pokeData: PokeStatsInfo }> = ({
           className={styles.infoButton}
         />
         <img src={sprites?.front_default} alt={name} className={styles.pokeImg} />
-        <h3 className={styles.pokeName}>{name}</h3>
+        <h3 className={pokeNameStyles}>{name}</h3>
       </div>
       <CardStats height={height} weight={weight} stats={stats} />
     </div>

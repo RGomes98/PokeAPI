@@ -7,25 +7,26 @@ import styles from '../../stylesheets/components/PokeCardComponents/PokeSounds.m
 import pokeInfoStyles from '../../stylesheets/components/PokePageComponents/PokeInfoContainer.module.scss';
 
 type PokeSoundsProps = {
-  pokeId: number;
+  pokeID: number;
   pokeName: string;
   isPokeSound: boolean;
   setIsPokeSound: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const PokeSounds: React.FC<PokeSoundsProps> = ({
-  pokeId,
+  pokeID,
   pokeName,
   isPokeSound,
   setIsPokeSound,
 }) => {
   const POKE_SOUND_DELAY = 1500;
-  const kantoPokesID = pokeId <= 151;
+  const kantoPokesID = pokeID <= 151;
 
   const pokeSoundRef = useRef<HTMLAudioElement>(null);
 
   const soundPlayerInactiveStyles = `${styles.playButton} ${pokeInfoStyles.playButton}`;
   const soundPlayerContainerStyles = `${styles.soundPlayerContainer} ${pokeInfoStyles.soundPlayerContainer}`;
+  const soundPlayerDisabledStyles = `${styles.playButton} ${pokeInfoStyles.playButton} ${styles.disabledPlayButton}`;
   const soundPlayerActiveStyles = `${styles.playButton} ${pokeInfoStyles.playButton}  ${styles.activePlayButton}`;
 
   const pokeSoundCooldown = (): void => {
@@ -38,7 +39,7 @@ export const PokeSounds: React.FC<PokeSoundsProps> = ({
 
   return (
     <div className={soundPlayerContainerStyles}>
-      {kantoPokesID && (
+      {kantoPokesID ? (
         <>
           <PlayCircle
             onClick={pokeSoundCooldown}
@@ -46,6 +47,8 @@ export const PokeSounds: React.FC<PokeSoundsProps> = ({
           />
           <audio ref={pokeSoundRef} src={pokeSoundsExports[pokeName]} preload='auto' />
         </>
+      ) : (
+        <PlayCircle className={soundPlayerDisabledStyles} />
       )}
     </div>
   );

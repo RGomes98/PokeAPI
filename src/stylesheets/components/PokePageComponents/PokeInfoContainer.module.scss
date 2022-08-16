@@ -32,7 +32,11 @@
 
       .pokeInfoName {
         text-transform: capitalize;
-        font-size: clamp(1.45rem, 6vw, 2rem);
+        font-size: clamp(1.8rem, 5vw, 2.2rem);
+      }
+
+      .tooBigpokeInfoName {
+        font-size: clamp(1.2rem, 2vw, 1.6rem);
       }
     }
 
