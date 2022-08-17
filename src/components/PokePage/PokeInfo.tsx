@@ -26,6 +26,11 @@ export const PokeInfo: React.FC<PokeInfoProps> = ({
   const LAST_POKE_ID = 898;
   const pokeGeneration = choosenpokemonDetails?.generation.name;
 
+  const canGoToNextPoke = LAST_POKE_ID > choosenPokemonStats?.id;
+
+  const canGoToPreviousPoke =
+    FIRST_POKE_ID < choosenPokemonStats?.id && LAST_POKE_ID >= choosenPokemonStats?.id;
+
   const pokeNameStyles =
     choosenPokemonStats?.name.includes('-') && choosenPokemonStats?.name.length > 10
       ? `${styles.pokeInfoName} ${styles.tooBigpokeInfoName}`
@@ -87,13 +92,13 @@ export const PokeInfo: React.FC<PokeInfoProps> = ({
               .flavor_text
           }
         </p>
-        {FIRST_POKE_ID < choosenPokemonStats?.id && (
+        {canGoToPreviousPoke && (
           <NavigateBefore
             onClick={() => navigate(`/pokemon/${choosenPokemonStats?.id - 1}`, { replace: true })}
             className={`${styles.searchBar_navigationButton} ${styles.navigationButtonLeft}`}
           />
         )}
-        {LAST_POKE_ID !== choosenPokemonStats?.id && (
+        {canGoToNextPoke && (
           <NavigateNext
             onClick={() => navigate(`/pokemon/${choosenPokemonStats?.id + 1}`, { replace: true })}
             className={`${styles.searchBar_navigationButton} ${styles.navigationButtonRight}`}
