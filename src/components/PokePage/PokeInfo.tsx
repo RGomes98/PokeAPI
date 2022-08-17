@@ -22,20 +22,6 @@ export const PokeInfo: React.FC<PokeInfoProps> = ({
   const navigate = useNavigate();
   const [isAudioPlaying, setIsAudioPlaying] = useState<boolean>(false);
 
-  const FIRST_POKE_ID = 1;
-  const LAST_POKE_ID = 898;
-  const pokeGeneration = choosenpokemonDetails?.generation.name;
-
-  const canGoToNextPoke = LAST_POKE_ID > choosenPokemonStats?.id;
-
-  const canGoToPreviousPoke =
-    FIRST_POKE_ID < choosenPokemonStats?.id && LAST_POKE_ID >= choosenPokemonStats?.id;
-
-  const pokeNameStyles =
-    choosenPokemonStats?.name.includes('-') && choosenPokemonStats?.name.length > 10
-      ? `${styles.pokeInfoName} ${styles.tooBigpokeInfoName}`
-      : styles.pokeInfoName;
-
   const flavorTextSelector = (generation: string) => {
     switch (generation) {
       case 'generation-i':
@@ -67,6 +53,26 @@ export const PokeInfo: React.FC<PokeInfoProps> = ({
     }
   };
 
+  const FIRST_POKE_ID = 1;
+  const LAST_POKE_ID = 898;
+  const pokeGeneration = choosenpokemonDetails?.generation.name;
+
+  const canGoToNextPoke = LAST_POKE_ID > choosenPokemonStats?.id;
+
+  const canGoToPreviousPoke =
+    FIRST_POKE_ID < choosenPokemonStats?.id && LAST_POKE_ID >= choosenPokemonStats?.id;
+
+  const pokeNameStyles =
+    choosenPokemonStats?.name.includes('-') && choosenPokemonStats?.name.length > 10
+      ? `${styles.pokeInfoName} ${styles.tooBigpokeInfoName}`
+      : styles.pokeInfoName;
+
+  const pokeFlavorTextStyles =
+    choosenpokemonDetails?.flavor_text_entries[flavorTextSelector(pokeGeneration)].flavor_text
+      .length < 150
+      ? styles.pokeInfoFlavorText
+      : `${styles.pokeInfoFlavorText} ${styles.pokeInfoFlavorTextTooBig}`;
+
   return (
     <div className={styles.pokeInfoContainer}>
       <div className={styles.pokeInfoWrapper}>
@@ -86,7 +92,7 @@ export const PokeInfo: React.FC<PokeInfoProps> = ({
           alt={choosenPokemonStats?.name}
           className={styles.pokeInfoImg}
         />
-        <p className={styles.pokeInfoFlavorText}>
+        <p className={pokeFlavorTextStyles}>
           {
             choosenpokemonDetails?.flavor_text_entries[flavorTextSelector(pokeGeneration)]
               .flavor_text

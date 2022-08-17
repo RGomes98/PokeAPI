@@ -9,7 +9,10 @@ export const PokeTypes: React.FC<{ types: Type[] }> = ({ types }) => {
   return (
     <div className={pokeTypeContainerStyles}>
       {types?.map(({ type: { name: typeName } }, idx) => {
-        const pokeTypeTextStyles = `${styles[typeName]} ${styles.pokeTypeText} ${pokeInfoStyles.pokeTypeText}`;
+        const pokeTypeTextStyles =
+          types.length > 1
+            ? `${styles[typeName]} ${styles.pokeTypeText} ${pokeInfoStyles.pokeTypeText}`
+            : `${styles[typeName]} ${styles.pokeTypeText} ${pokeInfoStyles.pokeTypeText} ${pokeInfoStyles.pokeTypeOne} `;
 
         return (
           <span key={idx} className={pokeTypeTextStyles}>

@@ -60,6 +60,10 @@
       font-size: 1.1rem;
     }
 
+    .pokeInfoFlavorTextTooBig {
+      font-size: 1rem;
+    }
+
     @media (max-width: 1150px) {
       .pokeInfoFlavorText {
         max-width: none;
@@ -148,6 +152,17 @@
         margin-top: 0.5rem;
         height: 50px;
         box-shadow: 0px 2px 5px variables.$search-box-shadow;
+      }
+
+      .pokeTypeOne {
+        height: 80px;
+        margin-top: -1rem;
+      }
+      @media (max-width: 1150px) {
+        .pokeTypeOne {
+          height: 50px;
+          margin-top: 0.5rem;
+        }
       }
     }
     @media (max-width: 1150px) {
