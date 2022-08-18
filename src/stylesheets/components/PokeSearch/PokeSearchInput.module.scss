@@ -111,11 +111,18 @@
       border-radius: 1rem;
       font-size: 1rem;
       font-weight: 500;
+      transition: ease 0.2s;
       color: variables.$white;
       font-family: variables.$poppins-font;
       background-color: variables.$pokeball-red;
       box-shadow: 0px 2px 5px variables.$search-box-shadow;
     }
+
+    .pokedexButton:hover {
+      transform: scale(1.02);
+      transition: ease 0.2s;
+    }
+
     @media (max-width: 500px) {
       .pokedexButton {
         display: flex;

@@ -26,6 +26,9 @@
       cursor: pointer;
       align-items: center;
       flex-direction: column;
+      position: relative;
+      align-items: center;
+      transition: ease 0.2s;
 
       .evolutionChainImg {
         width: 200px;
@@ -36,7 +39,14 @@
 
       .evolutionChainName {
         text-transform: uppercase;
+        position: absolute;
+        bottom: -8px;
       }
+    }
+
+    .evolutionChainPoke:hover {
+      transform: scale(1.05);
+      transition: ease 0.2s;
     }
   }
 }

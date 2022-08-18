@@ -73,7 +73,7 @@ export const PokeSearchInput = () => {
       </div>
       <div className={showPokeErrAnimation}>
         <ErrorOutlineOutlined className={styles.pokeSearchErrIcon} />
-        <p className={styles.pokeSearchErrText}>Pokemon doesn't exists!</p>
+        <p className={styles.pokeSearchErrText}>Pokemon doesn't exist!</p>
       </div>
     </div>
   );

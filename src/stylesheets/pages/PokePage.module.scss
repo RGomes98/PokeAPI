@@ -39,6 +39,7 @@
       cursor: pointer;
       position: absolute;
       left: 0;
+      transition: ease 0.2s;
       box-shadow: 0px 2px 5px variables.$search-box-shadow;
 
       .arrowIcon {
@@ -46,6 +47,12 @@
         margin-right: 0.8rem;
       }
     }
+
+    .homeButton:hover {
+      transform: scale(1.03);
+      transition: ease 0.2s;
+    }
+
     @media (max-width: 1150px) {
       .homeButton {
         top: -80px;
