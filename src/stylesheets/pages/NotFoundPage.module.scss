@@ -40,6 +40,7 @@
       height: clamp(7rem, 30vw, 16rem);
       width: clamp(7rem, 30vw, 16rem);
       background-image: linear-gradient(variables.$pokeball-red 50%, variables.$white 50%);
+      transition: ease 1s;
 
       .pokeballSecondCircle {
         width: 38%;
@@ -60,6 +61,11 @@
           border: 4px solid;
         }
       }
+    }
+
+    .pokeballFirstCircle:hover {
+      transform: rotate(360deg);
+      transition: ease 1s;
     }
   }
 

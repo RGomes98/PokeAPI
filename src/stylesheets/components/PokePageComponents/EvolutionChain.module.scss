@@ -26,8 +26,7 @@
       cursor: pointer;
       align-items: center;
       flex-direction: column;
-      position: relative;
-      align-items: center;
+      justify-content: center;
       transition: ease 0.2s;
 
       .evolutionChainImg {
@@ -39,8 +38,6 @@
 
       .evolutionChainName {
         text-transform: uppercase;
-        position: absolute;
-        bottom: -8px;
       }
     }
 

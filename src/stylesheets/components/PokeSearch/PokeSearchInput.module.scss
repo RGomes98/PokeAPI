@@ -16,8 +16,14 @@
     min-width: 300px;
     font-size: 1.4rem;
     padding-left: 1.5rem;
-    outline: none;
     font-family: variables.$poppins-font;
+    outline: 2px solid variables.$light-blue;
+    transition: ease 0.5s;
+  }
+
+  .focusSearchInput {
+    transition: ease 0.5s;
+    box-shadow: 0px 0px 15px 3px variables.$light-blue;
   }
 
   .clearInputButton {
@@ -26,10 +32,17 @@
     align-items: center;
     background-color: transparent;
     color: variables.$font-color-dark-grey;
+    cursor: pointer;
+    transition: ease 0.2s;
 
     .clearIcon {
       font-size: 1.7rem;
     }
+  }
+
+  .clearInputButton:hover {
+    color: variables.$pokeball-red;
+    transition: ease 0.2s;
   }
 
   .clearInputButton,
@@ -93,11 +106,12 @@
         text-align: center;
       }
       .tooBigPokeName {
-        font-size: clamp(1rem, 5vw, 2.2rem);
+        font-size: clamp(1rem, 5vw, 2rem);
       }
       @media (max-width: 500px) {
         .pokeName {
           white-space: nowrap;
+          font-size: 1.1rem;
         }
       }
     }

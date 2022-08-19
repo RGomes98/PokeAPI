@@ -14,10 +14,16 @@ export const PokeSearchInput = () => {
   const { pathname } = useLocation();
   const { setHomePageScrollYPosition } = usePokeAPIContext();
 
-  const [pokeSearch, setPokeSearch] = useState('');
+  const [pokeSearch, setPokeSearch] = useState<string>('');
+  const [isOnFocus, setIsOnFocus] = useState<boolean>(false);
   const { pokeSearchResponse, isPokeSearchErr } = usePokeSearch(pokeSearch);
 
   const atHomePage = pathname === '/';
+
+  const searchInputFocus =
+    isOnFocus && !pokeSearchResponse
+      ? `${styles.searchInput} ${styles.focusSearchInput}`
+      : styles.searchInput;
 
   const changePokeNameFontSize = pokeSearchResponse?.name.includes('-')
     ? `${styles.pokeName} ${styles.tooBigPokeName}`
@@ -38,7 +44,9 @@ export const PokeSearchInput = () => {
     <div className={pokeSearchContainerStyles}>
       <input
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPokeSearch(e.target.value)}
-        className={styles.searchInput}
+        onFocus={() => setIsOnFocus(true)}
+        onBlur={() => setIsOnFocus(false)}
+        className={searchInputFocus}
         value={pokeSearch}
         type='text'
         placeholder='PokeSearch'
