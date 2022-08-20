@@ -21,18 +21,29 @@ export const CardStats: React.FC<CardStatsProps> = ({ height, weight, stats }) =
   return (
     <div className={statsContainerStyles}>
       {stats?.map(({ base_stat, stat: { name } }, idx) => {
-        const changedStatsNames =
-          (name === 'hp' && 'HP') ||
-          (name === 'speed' && 'SPD') ||
-          (name === 'attack' && 'ATT') ||
-          (name === 'defense' && 'DEF') ||
-          (name === 'special-attack' && 'ATT-S') ||
-          (name === 'special-defense' && 'DEF-S');
+        const changeStatsNames = (name: string) => {
+          switch (name) {
+            case 'hp':
+              return 'HP';
+            case 'speed':
+              return 'SPD';
+            case 'attack':
+              return 'ATT';
+            case 'defense':
+              return 'DEF';
+            case 'special-attack':
+              return 'ATT-S';
+            case 'special-defense':
+              return 'DEF-S';
+            default:
+              return name;
+          }
+        };
 
         return (
           <div className={cardStatStyles} key={idx}>
             <span className={cardUnitNumberStyles}>{base_stat}</span>
-            <p className={cardUnitNameStyles}>{changedStatsNames}</p>
+            <p className={cardUnitNameStyles}>{changeStatsNames(name)}</p>
           </div>
         );
       })}

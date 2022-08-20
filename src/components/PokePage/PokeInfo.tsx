@@ -62,6 +62,9 @@ export const PokeInfo: React.FC<PokeInfoProps> = ({
   const canGoToPreviousPoke =
     FIRST_POKE_ID < choosenPokemonStats?.id && LAST_POKE_ID >= choosenPokemonStats?.id;
 
+  const selectedPokeFlavorText =
+    choosenpokemonDetails?.flavor_text_entries[flavorTextSelector(pokeGeneration)].flavor_text;
+
   const pokeNameStyles =
     choosenPokemonStats?.name.includes('-') && choosenPokemonStats?.name.length > 10
       ? `${styles.pokeInfoName} ${styles.tooBigpokeInfoName}`
@@ -92,12 +95,7 @@ export const PokeInfo: React.FC<PokeInfoProps> = ({
           alt={choosenPokemonStats?.name}
           className={styles.pokeInfoImg}
         />
-        <p className={pokeFlavorTextStyles}>
-          {
-            choosenpokemonDetails?.flavor_text_entries[flavorTextSelector(pokeGeneration)]
-              .flavor_text
-          }
-        </p>
+        <p className={pokeFlavorTextStyles}>{selectedPokeFlavorText}</p>
         {canGoToPreviousPoke && (
           <NavigateBefore
             onClick={() => navigate(`/pokemon/${choosenPokemonStats?.id - 1}`, { replace: true })}

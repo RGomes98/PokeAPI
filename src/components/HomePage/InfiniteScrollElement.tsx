@@ -19,7 +19,7 @@ export const InfiniteScrollElement: React.FC<InfiniteScrollElementProps> = ({
       {isInfiniteScrollActive && (
         <img
           src={loadingSpinner}
-          alt={'loadingSpinner'}
+          alt={`${loadingSpinner}`}
           className={
             isPokesLoading
               ? styles.infiniteScrollSpinner

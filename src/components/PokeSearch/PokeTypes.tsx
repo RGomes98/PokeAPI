@@ -4,10 +4,8 @@ import styles from '../../stylesheets/components/PokeSearch/PokeTypes.module.scs
 import pokeInfoStyles from '../../stylesheets/components/PokePageComponents/PokeInfoContainer.module.scss';
 
 export const PokeTypes: React.FC<{ types: Type[] }> = ({ types }) => {
-  const pokeTypeContainerStyles = `${styles.pokeTypeContainer} ${pokeInfoStyles.pokeTypeContainer}`;
-
   return (
-    <div className={pokeTypeContainerStyles}>
+    <div className={`${styles.pokeTypeContainer} ${pokeInfoStyles.pokeTypeContainer}`}>
       {types?.map(({ type: { name: typeName } }, idx) => {
         const pokeTypeTextStyles =
           types.length > 1

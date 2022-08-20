@@ -17,7 +17,6 @@ export const PokePage: React.FC = () => {
 
   const {
     getPokeStats,
-    getPokeDetails,
     pokeStats,
     pokeDetails,
     pokeVarieties,
@@ -33,12 +32,8 @@ export const PokePage: React.FC = () => {
     ? pokeName?.toLowerCase() !== currentPokeStats?.name
     : parseInt(pokeName!) !== currentPokeStats?.id;
 
-  const notMatchingPokeStatsAndDetails =
-    currentPokeStats?.species.name !== currentPokeDetails?.name;
-
   useEffect(() => {
     notMatchingPokeStatsAndParams && getPokeStats(pokeName);
-    notMatchingPokeStatsAndDetails && getPokeDetails(currentPokeStats);
   });
 
   return isPokeStatsLoading || isPokeDetailsLoading ? (

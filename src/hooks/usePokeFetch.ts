@@ -32,9 +32,9 @@ export const usePokeFetch = (): usePokeAPIReturn => {
       return setIsInfiniteScrollActive(false);
     }
 
+    setIsPokeAPILoading(true);
     pokeOffset === POKE_OFFSET_MAX_SIZE && setPokelimit(POKE_FETCH_LIMITER);
 
-    setIsPokeAPILoading(true);
     try {
       const {
         data: { results: pokeURL },

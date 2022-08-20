@@ -53,15 +53,13 @@ export const PokeVarieties: React.FC<PokeVarietiesProps> = ({
           const defaultPokeNameToShiny =
             name === pokemonVarieties[isChoosenPokeMega].pokemon.name ? `${name}-shiny` : name;
 
+          const showChoosenPokemonVariety =
+            variationSlider !== idx
+              ? `${styles.hidePokeVariation} ${styles.variationWrapper}`
+              : `${styles.showPokeVariation} ${styles.variationWrapper}`;
+
           return (
-            <div
-              className={
-                variationSlider !== idx
-                  ? `${styles.hidePokeVariation} ${styles.variationWrapper}`
-                  : `${styles.showPokeVariation} ${styles.variationWrapper}`
-              }
-              key={idx}
-            >
+            <div className={showChoosenPokemonVariety} key={idx}>
               <h3 className={styles.pokeVariationName_heading}>{defaultPokeNameToShiny}</h3>
               <img
                 className={styles.pokeVariation_img}

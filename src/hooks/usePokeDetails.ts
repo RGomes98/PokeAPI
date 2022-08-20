@@ -14,7 +14,6 @@ type usePokeDetailsReturn = {
   isPokeDetailsLoading: boolean;
   pokeDetails: PokeSpeciesInfo[];
   getPokeStats: (pokeName: string | undefined) => Promise<void>;
-  getPokeDetails: (pokeStats: PokeStatsInfo | undefined) => Promise<void>;
 };
 
 export const usePokeDetails = (): usePokeDetailsReturn => {
@@ -32,10 +31,9 @@ export const usePokeDetails = (): usePokeDetailsReturn => {
     setIsPokeStatsLoading(true);
 
     try {
-      const { data } = await axiosAPI.get<PokeStatsInfo>(
-        `pokemon/${pokeName?.toLocaleLowerCase()}`
-      );
+      const { data } = await axiosAPI.get<PokeStatsInfo>(`pokemon/${pokeName?.toLowerCase()}`);
       setPokeStats([data]);
+      getPokeDetails(data);
       setIsPokeStatsLoading(false);
     } catch (err) {
       navigate('/pokemon', { replace: true });
@@ -104,7 +102,6 @@ export const usePokeDetails = (): usePokeDetailsReturn => {
 
   return {
     getPokeStats,
-    getPokeDetails,
     isPokeDetailsLoading,
     isPokeStatsLoading,
     pokeDetails,
