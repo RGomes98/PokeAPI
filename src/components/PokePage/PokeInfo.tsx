@@ -20,9 +20,9 @@ export const PokeInfo: React.FC<PokeInfoProps> = ({
   choosenpokemonDetails,
 }) => {
   const navigate = useNavigate();
-  const [isAudioPlaying, setIsAudioPlaying] = useState<boolean>(false);
+  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
 
-  const flavorTextSelector = (generation: string) => {
+  const flavorTextSelector = (generation: string): number => {
     switch (generation) {
       case 'generation-i':
         return 11;
@@ -53,8 +53,8 @@ export const PokeInfo: React.FC<PokeInfoProps> = ({
     }
   };
 
-  const FIRST_POKE_ID = 1;
-  const LAST_POKE_ID = 898;
+  const FIRST_POKE_ID: number = 1;
+  const LAST_POKE_ID: number = 898;
   const pokeGeneration = choosenpokemonDetails?.generation.name;
 
   const canGoToNextPoke = LAST_POKE_ID > choosenPokemonStats?.id;

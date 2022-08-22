@@ -54,12 +54,14 @@
     border-radius: 2rem;
   }
 
-  .pokeSearchInfoWrapper {
+  .pokeSearchWrapper {
     width: 100%;
+    transition: 0.3s ease;
+    padding-top: 65px;
     height: 65px;
     overflow: hidden;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     flex-direction: column;
     border-radius: 2rem;
     background-color: variables.$card-color;
@@ -69,20 +71,22 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 80%;
+      height: 190px;
+      border-top: 1px solid variables.$font-color-grey;
       padding: 0.7rem 2rem 1rem;
 
       .pokeImg {
-        width: 35%;
+        width: 25%;
         max-width: 210px;
         image-rendering: pixelated;
         filter: drop-shadow(3px 5px 2px variables.$search-box-shadow);
       }
     }
-    @media (max-width: 500px) {
+    @media (max-width: 625px) {
       .pokeInfoWrapper {
         flex-direction: column;
         justify-content: flex-end;
+        height: 300px;
         gap: 0.2rem;
 
         .pokeImg {
@@ -90,6 +94,10 @@
           max-width: 150px;
         }
       }
+    }
+
+    .hideFirstBorder {
+      border-color: transparent;
     }
 
     .pokeNameWrapper {
@@ -101,14 +109,14 @@
       align-items: center;
 
       .pokeName {
-        font-size: clamp(2rem, 3vw, 2.5rem);
+        font-size: clamp(1.8rem, 3vw, 1.9rem);
         text-transform: uppercase;
         text-align: center;
       }
       .tooBigPokeName {
-        font-size: clamp(1rem, 5vw, 2rem);
+        font-size: 1.1rem;
       }
-      @media (max-width: 500px) {
+      @media (max-width: 625px) {
         .pokeName {
           white-space: nowrap;
           font-size: 1.1rem;
@@ -137,12 +145,13 @@
       transition: ease 0.2s;
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: 625px) {
       .pokedexButton {
         display: flex;
         justify-content: center;
         align-items: center;
-        max-width: 100%;
+        min-width: 235px;
+        max-width: 300px;
         max-height: 15%;
         width: 100%;
         padding: 1rem 0;
@@ -150,9 +159,32 @@
     }
   }
 
+  .searchSmall {
+    height: 257px;
+  }
+  .searchMedium {
+    height: 447px;
+  }
+  .searchLarge {
+    height: 637px;
+  }
+  @media (max-width: 625px) {
+    .searchSmall {
+      height: 365px;
+    }
+    .searchMedium {
+      height: 665px;
+    }
+    .searchLarge {
+      height: 965px;
+    }
+  }
+
   .pokeSearchErrContainer {
+    opacity: 0;
     display: flex;
     align-items: center;
+    transition: ease 0.3s;
     color: variables.$pokeball-red;
 
     .pokeSearchErrIcon {
@@ -168,21 +200,6 @@
   .pokeSearchErrShow {
     opacity: 1;
     margin-top: 0.8rem;
-    transition: ease 0.2s;
-  }
-
-  .pokeSearchErrHide {
-    opacity: 0;
-    transition: ease 0.2s;
-  }
-
-  .pokeSearchShowAnimation {
-    height: 325px;
-    transition: 0.2s ease-in-out;
-  }
-
-  .pokeSearchHideAnimation {
-    height: 65px;
-    transition: 0.2s ease-in-out;
+    transition: ease 0.3s;
   }
 }

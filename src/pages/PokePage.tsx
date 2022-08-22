@@ -3,11 +3,11 @@ import { ArrowBack } from '@mui/icons-material';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { usePokeDetails } from '../hooks/usePokeDetails';
+import { PokeInfo } from '../components/PokePage/PokeInfo';
 import { LoadingComponent } from '../components/LoadingComponent';
 import { EvolutionChain } from '../components/PokePage/EvolutionChain';
 import { PokeVarieties } from '../components/PokePage/PokeVarieties';
 import { PokeSearchInput } from '../components/PokeSearch/PokeSearchInput';
-import { PokeInfo } from '../components/PokePage/PokeInfo';
 
 import styles from '../stylesheets/pages/PokePage.module.scss';
 

@@ -13,12 +13,12 @@ type useInfiniteScrollOptions = {
 };
 
 export const useInfiniteScroll = (options: useInfiniteScrollOptions): useInfiniteScrollReturn => {
-  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [isVisible, setIsVisible] = useState(false);
 
-  const OBSERVER_DELAY = 100;
+  const OBSERVER_DELAY: number = 100;
   const infiniteScrollRef = useRef<HTMLImageElement>(null);
 
-  const observerCallback = (entries: IntersectionObserverEntry[]) => {
+  const observerCallback = (entries: IntersectionObserverEntry[]): void => {
     const [entry] = entries;
     setIsVisible(entry.isIntersecting);
   };

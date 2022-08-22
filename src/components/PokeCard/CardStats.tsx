@@ -10,7 +10,7 @@ type CardStatsProps = {
 };
 
 export const CardStats: React.FC<CardStatsProps> = ({ height, weight, stats }) => {
-  const UNIT_FORMULA = 10;
+  const UNIT_FORMULA: number = 10;
 
   const cardStatStyles = `${styles.statsWrapper} ${pokeInfoStyles.statsWrapper}`;
   const cardUnitNameStyles = `${styles.statsUnitName} ${pokeInfoStyles.statsUnitName}`;
@@ -21,7 +21,7 @@ export const CardStats: React.FC<CardStatsProps> = ({ height, weight, stats }) =
   return (
     <div className={statsContainerStyles}>
       {stats?.map(({ base_stat, stat: { name } }, idx) => {
-        const changeStatsNames = (name: string) => {
+        const changeStatsNames = (name: string): string => {
           switch (name) {
             case 'hp':
               return 'HP';

@@ -17,9 +17,10 @@ export const PokeVarieties: React.FC<PokeVarietiesProps> = ({
 }) => {
   const [variationSlider, setVariationSlider] = useState(0);
 
-  const isChoosenPokeMega = choosenPokemonStats?.name.includes('-mega') ? 1 : 0;
+  const isChoosenPokeMega: number = choosenPokemonStats?.name.includes('-mega') ? 1 : 0;
   const varietiesLength = pokemonVarieties.slice(isChoosenPokeMega).length - 1;
-  const pokeSpriteURL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
+  const pokeSpriteURL: string =
+    'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
 
   const handleVariations = (action: string): void => {
     if (action === 'NEXT')

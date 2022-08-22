@@ -2,51 +2,71 @@ import { useState, useEffect } from 'react';
 
 import { axiosAPI } from '../services/axiosAPI';
 import { PokeStatsInfo } from '../interfaces/PokeStatsInfo';
+import { usePokeAPIContext } from '../context/PokeAPIContext';
+import { PokeURL, PokeURLInfo } from '../interfaces/PokeURLInfo';
 
-type usePokeSearchType = {
+type usePokeSearchReturn = {
   isPokeSearchErr: boolean;
-  pokeSearchResponse: PokeStatsInfo | undefined;
+  pokeSearchResponse: PokeStatsInfo[];
 };
 
-export const usePokeSearch = (pokeName: string | undefined): usePokeSearchType => {
-  const [isPokeSearchErr, setIsPokeSearchErr] = useState<boolean>(false);
-  const [pokeSearchResponse, setPokeSearchResponse] = useState<PokeStatsInfo | undefined>();
+export const usePokeSearch = (pokeArr: PokeURL[], pokeSearchInput: string): usePokeSearchReturn => {
+  const { pokeSearchList, setPokeSearchList } = usePokeAPIContext();
+
+  const [isPokeSearchErr, setIsPokeSearchErr] = useState(false);
+  const [pokeSearchResponse, setPokeSearchResponse] = useState<PokeStatsInfo[]>([]);
+
+  const pokeListSize: number = 898;
+
+  const getPokeSearchList = async (listSize: number): Promise<void> => {
+    try {
+      const {
+        data: { results },
+      } = await axiosAPI.get<PokeURLInfo>(`pokemon/?limit=${listSize}&offset=0`);
+      setPokeSearchList(results);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    !pokeSearchList.length && getPokeSearchList(pokeListSize);
+  });
 
   useEffect(() => {
     const controller = new AbortController();
     const { signal } = controller;
 
-    (async (pokeName: string | undefined, signal: AbortSignal) => {
-      if (!pokeName) {
-        return setIsPokeSearchErr(false);
+    (async (pokeArr, signal: AbortSignal): Promise<void> => {
+      if (!pokeArr.length && pokeSearchInput) {
+        setIsPokeSearchErr(true);
+        return setPokeSearchResponse([]);
       }
 
       try {
-        const { data: pokeResponse } = await axiosAPI.get<PokeStatsInfo>(
-          `pokemon/${pokeName?.toLowerCase()}`,
-          {
-            signal: signal,
-            headers: {
-              'Cache-Control': 'no-cache',
-            },
-          }
+        const fetchedPokeList = await Promise.all(
+          pokeArr.map(async ({ url }) => {
+            const { data } = await axiosAPI.get<PokeStatsInfo>(`${url}`, {
+              signal,
+              headers: {
+                'Cache-Control': 'no-cache',
+              },
+            });
+            return data;
+          })
         );
-        if (pokeResponse?.name) {
-          setIsPokeSearchErr(false);
-          setPokeSearchResponse(pokeResponse);
-        }
+
+        setIsPokeSearchErr(false);
+        setPokeSearchResponse(fetchedPokeList);
       } catch (err: unknown) {
-        if (err instanceof Error) {
-          err.name === 'AxiosError' && setIsPokeSearchErr(true);
-        }
+        return setIsPokeSearchErr(true);
       }
-    })(pokeName, signal);
+    })(pokeArr, signal);
 
     return () => {
       controller?.abort();
-      setPokeSearchResponse(undefined);
     };
-  }, [pokeName]);
+  }, [pokeArr, pokeSearchInput]);
 
   return { pokeSearchResponse, isPokeSearchErr };
 };

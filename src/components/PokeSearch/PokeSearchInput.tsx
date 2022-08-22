@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { Clear, ErrorOutlineOutlined } from '@mui/icons-material';
 
 import { PokeTypes } from './PokeTypes';
+import { PokeURL } from '../../interfaces/PokeURLInfo';
 import { usePokeSearch } from '../../hooks/usePokeSearch';
 import { usePokeAPIContext } from '../../context/PokeAPIContext';
 
@@ -12,72 +13,110 @@ import styles from '../../stylesheets/components/PokeSearch/PokeSearchInput.modu
 export const PokeSearchInput = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
-  const { setHomePageScrollYPosition } = usePokeAPIContext();
+  const { pokeSearchList, setHomePageScrollYPosition } = usePokeAPIContext();
 
-  const [pokeSearch, setPokeSearch] = useState<string>('');
-  const [isOnFocus, setIsOnFocus] = useState<boolean>(false);
-  const { pokeSearchResponse, isPokeSearchErr } = usePokeSearch(pokeSearch);
+  const [isOnFocus, setIsOnFocus] = useState(false);
+  const [pokeSearchInput, setPokeSearchInput] = useState('');
+  const [filteredPokeList, setFilteredPokeList] = useState<PokeURL[]>([]);
+
+  const { pokeSearchResponse, isPokeSearchErr } = usePokeSearch(filteredPokeList, pokeSearchInput);
+
+  const pokeSearchTransition = (pokeResponseArraySize: number): string => {
+    switch (pokeResponseArraySize) {
+      case 1:
+        return styles.searchSmall;
+      case 2:
+        return styles.searchMedium;
+      case 3:
+        return styles.searchLarge;
+      default:
+        return styles.pokeSearchInfoWrapper;
+    }
+  };
+
+  const pokeSearchFilter = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const { value } = e.target;
+    setPokeSearchInput(value);
+
+    const filter = pokeSearchList
+      .filter((poke) => {
+        if (!value) return false;
+        if (poke.name.toLowerCase().includes(value.toLowerCase())) return poke;
+        return false;
+      })
+      .slice(0, 3);
+
+    setFilteredPokeList(filter);
+  };
 
   const atHomePage = pathname === '/';
 
   const searchInputFocus =
-    isOnFocus && !pokeSearchResponse
+    isOnFocus && !pokeSearchResponse.length
       ? `${styles.searchInput} ${styles.focusSearchInput}`
       : styles.searchInput;
 
-  const changePokeNameFontSize = pokeSearchResponse?.name.includes('-')
-    ? `${styles.pokeName} ${styles.tooBigPokeName}`
-    : styles.pokeName;
-
   const showPokeErrAnimation = isPokeSearchErr
     ? `${styles.pokeSearchErrShow} ${styles.pokeSearchErrContainer}`
-    : `${styles.pokeSearchErrHide} ${styles.pokeSearchErrContainer}`;
+    : styles.pokeSearchErrContainer;
 
-  const pokeSearchAnimation = pokeSearchResponse
-    ? `${styles.pokeSearchInfoWrapper} ${styles.pokeSearchShowAnimation}`
-    : `${styles.pokeSearchInfoWrapper} ${styles.pokeSearchHideAnimation}` ||
-      styles.pokeSearchInfoWrapper;
-
-  const pokeSearchContainerStyles = `${styles.pokeSearchContainer} ${pokePageStyles.pokeSearchContainer}`;
+  const pokeSearchWrapperStyles = `${styles.pokeSearchWrapper} ${pokeSearchTransition(
+    pokeSearchResponse?.length
+  )}`;
 
   return (
-    <div className={pokeSearchContainerStyles}>
+    <div className={`${styles.pokeSearchContainer} ${pokePageStyles.pokeSearchContainer}`}>
       <input
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPokeSearch(e.target.value)}
+        value={pokeSearchInput}
+        onChange={pokeSearchFilter}
         onFocus={() => setIsOnFocus(true)}
         onBlur={() => setIsOnFocus(false)}
-        className={searchInputFocus}
-        value={pokeSearch}
         type='text'
         placeholder='PokeSearch'
+        className={searchInputFocus}
       />
-      <button onClick={() => setPokeSearch('')} className={styles.clearInputButton}>
-        {pokeSearchResponse && <Clear className={styles.clearIcon} />}
+      <button
+        onClick={() => {
+          setPokeSearchInput('');
+          setFilteredPokeList([]);
+        }}
+        className={styles.clearInputButton}
+      >
+        {!!pokeSearchResponse.length && <Clear className={styles.clearIcon} />}
       </button>
-      <div className={pokeSearchAnimation}>
-        <div className={styles.pokeInfoWrapper}>
-          <img
-            className={styles.pokeImg}
-            src={pokeSearchResponse?.sprites.front_default}
-            alt={pokeSearchResponse?.name}
-          />
-          <div className={styles.pokeNameWrapper}>
-            <h3 className={changePokeNameFontSize}>{pokeSearchResponse?.name}</h3>
-            <PokeTypes types={pokeSearchResponse?.types!} />
-          </div>
-          <button
-            onClick={() => {
-              setPokeSearch('');
-              atHomePage && setHomePageScrollYPosition(window.scrollY);
-              navigate(`/pokemon/${pokeSearchResponse?.name}`, {
-                replace: atHomePage ? false : true,
-              });
-            }}
-            className={styles.pokedexButton}
-          >
-            POKEDEX
-          </button>
-        </div>
+      <div className={pokeSearchWrapperStyles}>
+        {pokeSearchResponse.map((poke, idx) => {
+          const hideFirstPokeBorder =
+            idx === 0
+              ? `${styles.pokeInfoWrapper} ${styles.hideFirstBorder}`
+              : styles.pokeInfoWrapper;
+
+          const changePokeNameFontSize =
+            poke?.name.length > 12 && poke?.name.includes('-')
+              ? `${styles.pokeName} ${styles.tooBigPokeName}`
+              : styles.pokeName;
+
+          return (
+            <div className={hideFirstPokeBorder} key={idx}>
+              <img className={styles.pokeImg} src={poke?.sprites.front_default} alt={poke?.name} />
+              <div className={styles.pokeNameWrapper}>
+                <h3 className={changePokeNameFontSize}>{poke?.name}</h3>
+                <PokeTypes types={poke?.types!} />
+              </div>
+              <button
+                onClick={() => {
+                  atHomePage && setHomePageScrollYPosition(window.scrollY);
+                  navigate(`/pokemon/${poke?.name}`, {
+                    replace: atHomePage ? false : true,
+                  });
+                }}
+                className={styles.pokedexButton}
+              >
+                POKEDEX
+              </button>
+            </div>
+          );
+        })}
       </div>
       <div className={showPokeErrAnimation}>
         <ErrorOutlineOutlined className={styles.pokeSearchErrIcon} />

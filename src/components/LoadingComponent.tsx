@@ -4,8 +4,8 @@ import styles from '../stylesheets/components/LoadingComponent.module.scss';
 export const LoadingComponent: React.FC = () => {
   return (
     <div className={styles.loadingComponentContainer}>
-      <h1 className={styles.loadingComponentHeading}>Loading</h1>
       <img className={styles.loadingComponentImg} src={loadingSpinner} alt='loadingSpinner' />
+      <h1 className={styles.loadingComponentHeading}>Loading</h1>
     </div>
   );
 };

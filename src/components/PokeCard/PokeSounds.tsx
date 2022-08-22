@@ -19,7 +19,7 @@ export const PokeSounds: React.FC<PokeSoundsProps> = ({
   isPokeSound,
   setIsPokeSound,
 }) => {
-  const POKE_SOUND_DELAY = 1500;
+  const POKE_SOUND_DELAY: number = 1500;
   const kantoPokesID = pokeID <= 151;
 
   const pokeSoundRef = useRef<HTMLAudioElement>(null);
@@ -29,8 +29,8 @@ export const PokeSounds: React.FC<PokeSoundsProps> = ({
   const soundPlayerDisabledStyles = `${styles.playButton} ${pokeInfoStyles.playButton} ${styles.disabledPlayButton}`;
   const soundPlayerActiveStyles = `${styles.playButton} ${pokeInfoStyles.playButton}  ${styles.activePlayButton}`;
 
-  const pokeSoundCooldown = (): void => {
-    if (!isPokeSound) {
+  const pokeSoundCooldown = (isPokeSoundPlaying: boolean): void => {
+    if (!isPokeSoundPlaying) {
       setIsPokeSound(true);
       pokeSoundRef?.current?.play();
       setTimeout(() => setIsPokeSound(false), POKE_SOUND_DELAY);
@@ -42,7 +42,7 @@ export const PokeSounds: React.FC<PokeSoundsProps> = ({
       {kantoPokesID ? (
         <>
           <PlayCircle
-            onClick={pokeSoundCooldown}
+            onClick={() => pokeSoundCooldown(isPokeSound)}
             className={isPokeSound ? soundPlayerActiveStyles : soundPlayerInactiveStyles}
           />
           <audio ref={pokeSoundRef} src={pokeSoundsExports[pokeName]} preload='auto' />

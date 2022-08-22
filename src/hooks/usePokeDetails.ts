@@ -27,7 +27,7 @@ export const usePokeDetails = (): usePokeDetailsReturn => {
   const [pokeEvolutions, setPokeEvolutions] = useState<Species[]>([]);
   const [pokeDetails, setPokeDetails] = useState<PokeSpeciesInfo[]>([]);
 
-  const getPokeStats = async (pokeName: string | undefined) => {
+  const getPokeStats = async (pokeName: string | undefined): Promise<void> => {
     setIsPokeStatsLoading(true);
 
     try {
@@ -41,7 +41,7 @@ export const usePokeDetails = (): usePokeDetailsReturn => {
     }
   };
 
-  const getPokeDetails = async (pokeStats: PokeStatsInfo | undefined) => {
+  const getPokeDetails = async (pokeStats: PokeStatsInfo | undefined): Promise<void> => {
     if (!pokeStats) return;
     setIsPokeDetailsLoading(true);
 

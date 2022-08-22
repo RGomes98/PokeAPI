@@ -11,12 +11,12 @@ type usePokeAPIReturn = {
 };
 
 export const usePokeFetch = (): usePokeAPIReturn => {
-  const [isPokeAPILoading, setIsPokeAPILoading] = useState<boolean>(false);
+  const [isPokeAPILoading, setIsPokeAPILoading] = useState(false);
 
-  const OFFSET_INCREMENT = 20;
-  const POKE_FETCH_LIMITER = 9;
-  const POKE_DATA_MAX_SIZE = 820;
-  const POKE_OFFSET_MAX_SIZE = 780;
+  const OFFSET_INCREMENT: number = 20;
+  const POKE_FETCH_LIMITER: number = 9;
+  const POKE_DATA_MAX_SIZE: number = 820;
+  const POKE_OFFSET_MAX_SIZE: number = 780;
 
   const {
     pokeLimit,
@@ -45,6 +45,7 @@ export const usePokeFetch = (): usePokeAPIReturn => {
           return pokeData;
         })
       );
+
       setIsPokeAPILoading(false);
       setPokeOffset((prev) => prev + OFFSET_INCREMENT);
       setPokeData((prev) => [...prev, ...pokePromise]);

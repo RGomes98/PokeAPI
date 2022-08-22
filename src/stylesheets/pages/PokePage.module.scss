@@ -18,6 +18,7 @@
 
     .pokeSearchContainer {
       margin-left: 3rem;
+      width: 85%;
     }
     @media (max-width: 1150px) {
       .pokeSearchContainer {
@@ -93,7 +94,7 @@
   @media (max-width: 1150px) {
     .pokeInfoWrapper {
       height: auto;
-      width: 60%;
+      width: 85%;
       margin-top: 2rem;
       padding: 1rem 0.5rem;
       position: relative;

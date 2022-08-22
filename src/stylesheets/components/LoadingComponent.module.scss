@@ -10,15 +10,15 @@
   flex-direction: column;
   align-items: center;
 
-  .loadingComponentHeading {
-    font-size: 2.5rem;
-    display: block;
-    margin-bottom: 2rem;
-  }
-
   .loadingComponentImg {
     width: 125px;
     height: 125px;
+  }
+
+  .loadingComponentHeading {
+    font-size: 2.5rem;
+    display: block;
+    margin-top: 2rem;
   }
 
   @media (max-width: 500px) {

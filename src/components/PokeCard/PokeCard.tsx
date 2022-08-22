@@ -14,7 +14,7 @@ export const PokeCard: React.FC<{ pokeData: PokeStatsInfo }> = ({
 }) => {
   const navigate = useNavigate();
   const { setHomePageScrollYPosition } = usePokeAPIContext();
-  const [isAudioPlaying, setIsAudioPlaying] = useState<boolean>(false);
+  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
 
   const pokeNameStyles =
     name?.includes('-') && name?.length > 10

@@ -4,14 +4,13 @@ import { Species } from '../../interfaces/PokeEvolutionChain';
 
 import styles from '../../stylesheets/components/PokePageComponents/EvolutionChain.module.scss';
 
-type EvolutionChainProps = {
+export const EvolutionChain: React.FC<{
   pokemonChain: Species[];
-};
-
-export const EvolutionChain: React.FC<EvolutionChainProps> = ({ pokemonChain }) => {
+}> = ({ pokemonChain }) => {
   const navigate = useNavigate();
 
-  const pokeSpriteURL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
+  const pokeSpriteURL: string =
+    'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
 
   return (
     <div className={styles.evolutionChainContainer}>
