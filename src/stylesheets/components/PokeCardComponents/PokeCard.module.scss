@@ -4,7 +4,8 @@
 //PokeCard Styles
 .pokeCard {
   height: 450px;
-  width: 300px;
+  max-width: 300px;
+  min-width: 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

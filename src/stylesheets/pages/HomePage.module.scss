@@ -13,6 +13,7 @@
   .homePage__logo {
     width: 85%;
     max-width: 450px;
+    min-width: 300px;
     margin-bottom: 3rem;
     filter: drop-shadow(3px 5px 2px variables.$search-box-shadow);
   }

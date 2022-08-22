@@ -56,9 +56,10 @@ export const PokeSearchInput = () => {
       ? `${styles.searchInput} ${styles.focusSearchInput}`
       : styles.searchInput;
 
-  const showPokeErrAnimation = isPokeSearchErr
-    ? `${styles.pokeSearchErrShow} ${styles.pokeSearchErrContainer}`
-    : styles.pokeSearchErrContainer;
+  const showPokeErrAnimation =
+    isPokeSearchErr && pokeSearchInput
+      ? `${styles.pokeSearchErrShow} ${styles.pokeSearchErrContainer}`
+      : styles.pokeSearchErrContainer;
 
   const pokeSearchWrapperStyles = `${styles.pokeSearchWrapper} ${pokeSearchTransition(
     pokeSearchResponse?.length
