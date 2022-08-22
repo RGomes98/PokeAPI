@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useState, useEffect } from 'react';
 
 import { axiosAPI } from '../services/axiosAPI';
@@ -59,7 +60,9 @@ export const usePokeSearch = (pokeArr: PokeURL[], pokeSearchInput: string): useP
         setIsPokeSearchErr(false);
         setPokeSearchResponse(fetchedPokeList);
       } catch (err: unknown) {
-        return setIsPokeSearchErr(true);
+        if (axios?.isAxiosError(err)) {
+          console.error(err?.name);
+        }
       }
     })(pokeArr, signal);
 
