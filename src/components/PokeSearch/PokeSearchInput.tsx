@@ -7,6 +7,7 @@ import { PokeURL } from '../../interfaces/PokeURLInfo';
 import { usePokeSearch } from '../../hooks/usePokeSearch';
 import { usePokeAPIContext } from '../../context/PokeAPIContext';
 
+import ringLoadingSpinner from '../../assets/svg/ringLoadingSpinner.svg';
 import pokePageStyles from '../../stylesheets/pages/PokePage.module.scss';
 import styles from '../../stylesheets/components/PokeSearch/PokeSearchInput.module.scss';
 
@@ -19,7 +20,10 @@ export const PokeSearchInput = () => {
   const [pokeSearchInput, setPokeSearchInput] = useState('');
   const [filteredPokeList, setFilteredPokeList] = useState<PokeURL[]>([]);
 
-  const { pokeSearchResponse, isPokeSearchErr } = usePokeSearch(filteredPokeList, pokeSearchInput);
+  const { pokeSearchResponse, isPokeSearchLoading, isPokeSearchErr } = usePokeSearch(
+    filteredPokeList,
+    pokeSearchInput
+  );
 
   const pokeSearchTransition = (pokeResponseArraySize: number): string => {
     switch (pokeResponseArraySize) {
@@ -65,6 +69,8 @@ export const PokeSearchInput = () => {
     pokeSearchResponse?.length
   )}`;
 
+  console.log(isPokeSearchLoading);
+
   return (
     <div className={`${styles.pokeSearchContainer} ${pokePageStyles.pokeSearchContainer}`}>
       <input
@@ -83,8 +89,17 @@ export const PokeSearchInput = () => {
         }}
         className={styles.clearInputButton}
       >
-        {!!pokeSearchResponse.length && <Clear className={styles.clearIcon} />}
+        {!!pokeSearchResponse?.length && !isPokeSearchLoading && (
+          <Clear className={styles.clearIcon} />
+        )}
       </button>
+      {isPokeSearchLoading && (
+        <img
+          src={ringLoadingSpinner}
+          alt='ringLoadingSpinner'
+          className={styles.ringLoadingSpinner}
+        />
+      )}
       <div className={pokeSearchWrapperStyles}>
         {pokeSearchResponse.map((poke, idx) => {
           const hideFirstPokeBorder =

@@ -8,6 +8,7 @@ import { PokeURL, PokeURLInfo } from '../interfaces/PokeURLInfo';
 
 type usePokeSearchReturn = {
   isPokeSearchErr: boolean;
+  isPokeSearchLoading: boolean;
   pokeSearchResponse: PokeStatsInfo[];
 };
 
@@ -15,6 +16,7 @@ export const usePokeSearch = (pokeArr: PokeURL[], pokeSearchInput: string): useP
   const { pokeSearchList, setPokeSearchList } = usePokeAPIContext();
 
   const [isPokeSearchErr, setIsPokeSearchErr] = useState(false);
+  const [isPokeSearchLoading, setIsPokeSearchLoading] = useState(false);
   const [pokeSearchResponse, setPokeSearchResponse] = useState<PokeStatsInfo[]>([]);
 
   const pokeListSize: number = 898;
@@ -41,8 +43,10 @@ export const usePokeSearch = (pokeArr: PokeURL[], pokeSearchInput: string): useP
     (async (pokeArr, signal: AbortSignal): Promise<void> => {
       if (!pokeArr.length && pokeSearchInput) {
         setIsPokeSearchErr(true);
+        setIsPokeSearchLoading(false);
         return setPokeSearchResponse([]);
       }
+      setIsPokeSearchLoading(true);
 
       try {
         const fetchedPokeList = await Promise.all(
@@ -58,10 +62,15 @@ export const usePokeSearch = (pokeArr: PokeURL[], pokeSearchInput: string): useP
         );
 
         setIsPokeSearchErr(false);
+        setIsPokeSearchLoading(false);
         setPokeSearchResponse(fetchedPokeList);
       } catch (err: unknown) {
         if (axios?.isAxiosError(err)) {
-          console.error(err?.name);
+          if (err?.name !== 'CanceledError') {
+            setIsPokeSearchErr(true);
+            setIsPokeSearchLoading(false);
+          }
+          console.error(err?.message);
         }
       }
     })(pokeArr, signal);
@@ -71,5 +80,5 @@ export const usePokeSearch = (pokeArr: PokeURL[], pokeSearchInput: string): useP
     };
   }, [pokeArr, pokeSearchInput]);
 
-  return { pokeSearchResponse, isPokeSearchErr };
+  return { pokeSearchResponse, isPokeSearchLoading, isPokeSearchErr };
 };
