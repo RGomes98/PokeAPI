@@ -69,8 +69,6 @@ export const PokeSearchInput = () => {
     pokeSearchResponse?.length
   )}`;
 
-  console.log(isPokeSearchLoading);
-
   return (
     <div className={`${styles.pokeSearchContainer} ${pokePageStyles.pokeSearchContainer}`}>
       <input
