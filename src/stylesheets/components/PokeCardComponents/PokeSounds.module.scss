@@ -10,17 +10,24 @@
     font-size: 2.3rem;
     position: absolute;
     color: variables.$font-color-medium-grey;
+    transition: ease 0.3s;
+  }
+
+  .playButton:hover {
+    transition: ease 0.3s;
+    transform: rotate(360deg) scale(1.1);
   }
 
   .activePlayButton {
     opacity: 0.9;
-    transition: ease-out;
+    transition: ease 0.3s;
     fill: variables.$pokeball-red;
   }
 
   .disabledPlayButton {
     opacity: 0.25;
     cursor: default;
+    pointer-events: none;
     fill: variables.$pokeball-red;
   }
 }

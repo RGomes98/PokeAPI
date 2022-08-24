@@ -28,6 +28,12 @@
       cursor: pointer;
       position: absolute;
       color: variables.$font-color-medium-grey;
+      transition: ease 0.3s;
+    }
+
+    .infoButton:hover {
+      transition: ease 0.3s;
+      transform: rotate(360deg) scale(1.1);
     }
 
     .pokeImg {

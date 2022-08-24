@@ -12,8 +12,9 @@
   .pokeInfoWrapper {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     min-width: 300px;
+    padding: 1.5rem 0;
     position: relative;
 
     .pokeInfoHeading {
@@ -39,19 +40,47 @@
         font-size: clamp(1.2rem, 2vw, 1.6rem);
       }
     }
-
     @media (max-width: 1150px) {
       .pokeInfoHeading {
         margin-top: 0.5rem;
       }
     }
 
-    .pokeInfoImg {
-      width: 250px;
-      height: auto;
-      align-self: center;
-      image-rendering: pixelated;
-      filter: drop-shadow(3px 5px 2px variables.$search-box-shadow);
+    .pokeImgWrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .pokeInfoImg {
+        width: 250px;
+        height: auto;
+        align-self: center;
+        image-rendering: pixelated;
+        filter: drop-shadow(3px 5px 2px variables.$search-box-shadow);
+      }
+
+      .searchBar_navigationButton {
+        font-size: 3rem;
+        cursor: pointer;
+        color: variables.$font-color-dark-grey;
+        position: absolute;
+        transition: 0.3s ease;
+      }
+
+      .searchBar_navigationButton:hover {
+        color: variables.$pokeball-red;
+        transition: 0.3s ease;
+        transform: scale(1.2);
+        opacity: 0.8;
+      }
+
+      .navigationButtonLeft {
+        left: -5px;
+      }
+
+      .navigationButtonRight {
+        right: -5px;
+      }
     }
 
     .pokeInfoFlavorText {
@@ -61,30 +90,14 @@
     }
 
     .pokeInfoFlavorTextTooBig {
-      font-size: 1rem;
+      font-size: 0.88rem;
     }
-
     @media (max-width: 1150px) {
       .pokeInfoFlavorText {
         max-width: none;
         text-align: center;
         max-width: 500px;
       }
-    }
-
-    .searchBar_navigationButton {
-      font-size: 3rem;
-      cursor: pointer;
-      color: variables.$font-color-dark-grey;
-      position: absolute;
-    }
-
-    .navigationButtonLeft {
-      left: -5px;
-    }
-
-    .navigationButtonRight {
-      right: -5px;
     }
   }
   @media (max-width: 1150px) {

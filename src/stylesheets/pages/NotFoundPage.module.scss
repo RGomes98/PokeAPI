@@ -19,7 +19,6 @@
       font-weight: 700;
       color: variables.$font-color-grey;
       font-size: clamp(8rem, 45vw, 19rem);
-      user-select: none;
     }
 
     .pokeballFirstCircle::before {

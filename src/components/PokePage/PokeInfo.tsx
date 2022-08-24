@@ -90,24 +90,26 @@ export const PokeInfo: React.FC<PokeInfoProps> = ({
             className={pokeNameStyles}
           >{`#.${choosenpokemonDetails?.id} ${choosenPokemonStats?.name}`}</h1>
         </div>
-        <img
-          src={choosenPokemonStats?.sprites.front_default}
-          alt={choosenPokemonStats?.name}
-          className={styles.pokeInfoImg}
-        />
+        <div className={styles.pokeImgWrapper}>
+          <img
+            src={choosenPokemonStats?.sprites.front_default}
+            alt={choosenPokemonStats?.name}
+            className={styles.pokeInfoImg}
+          />
+          {canGoToPreviousPoke && (
+            <NavigateBefore
+              onClick={() => navigate(`/pokemon/${choosenPokemonStats?.id - 1}`, { replace: true })}
+              className={`${styles.searchBar_navigationButton} ${styles.navigationButtonLeft}`}
+            />
+          )}
+          {canGoToNextPoke && (
+            <NavigateNext
+              onClick={() => navigate(`/pokemon/${choosenPokemonStats?.id + 1}`, { replace: true })}
+              className={`${styles.searchBar_navigationButton} ${styles.navigationButtonRight}`}
+            />
+          )}
+        </div>
         <p className={pokeFlavorTextStyles}>{selectedPokeFlavorText}</p>
-        {canGoToPreviousPoke && (
-          <NavigateBefore
-            onClick={() => navigate(`/pokemon/${choosenPokemonStats?.id - 1}`, { replace: true })}
-            className={`${styles.searchBar_navigationButton} ${styles.navigationButtonLeft}`}
-          />
-        )}
-        {canGoToNextPoke && (
-          <NavigateNext
-            onClick={() => navigate(`/pokemon/${choosenPokemonStats?.id + 1}`, { replace: true })}
-            className={`${styles.searchBar_navigationButton} ${styles.navigationButtonRight}`}
-          />
-        )}
       </div>
       <div className={styles.pokeInfoTypeStatsWrapper}>
         <CardStats

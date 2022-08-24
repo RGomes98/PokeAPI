@@ -28,6 +28,14 @@
       cursor: pointer;
       position: absolute;
       top: 0;
+      transition: 0.3s ease;
+    }
+
+    .variationButton:hover {
+      color: variables.$pokeball-red;
+      transition: 0.3s ease;
+      transform: scale(1.2);
+      opacity: 0.8;
     }
 
     .variationButtonRight {
@@ -45,6 +53,7 @@
         border-radius: 1rem;
         top: auto;
       }
+
       .variationButtonRight {
         right: 5px;
       }
