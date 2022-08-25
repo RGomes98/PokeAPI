@@ -21,7 +21,6 @@ export const PokePage: React.FC = () => {
     pokeDetails,
     pokeVarieties,
     pokeEvolutions,
-    isPokeStatsLoading,
     isPokeDetailsLoading,
   } = usePokeDetails();
 
@@ -36,7 +35,7 @@ export const PokePage: React.FC = () => {
     notMatchingPokeStatsAndParams && getPokeStats(pokeName);
   });
 
-  return isPokeStatsLoading || isPokeDetailsLoading ? (
+  return isPokeDetailsLoading ? (
     <LoadingComponent />
   ) : (
     <div className={styles.pokePageContainer}>

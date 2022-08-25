@@ -10,7 +10,6 @@ type usePokeDetailsReturn = {
   pokeVarieties: Variety[];
   pokeEvolutions: Species[];
   pokeStats: PokeStatsInfo[];
-  isPokeStatsLoading: boolean;
   isPokeDetailsLoading: boolean;
   pokeDetails: PokeSpeciesInfo[];
   getPokeStats: (pokeName: string | undefined) => Promise<void>;
@@ -19,32 +18,26 @@ type usePokeDetailsReturn = {
 export const usePokeDetails = (): usePokeDetailsReturn => {
   const navigate = useNavigate();
 
-  const [isPokeStatsLoading, setIsPokeStatsLoading] = useState(false);
-  const [isPokeDetailsLoading, setIsPokeDetailsLoading] = useState(false);
-
   const [pokeStats, setPokeStats] = useState<PokeStatsInfo[]>([]);
   const [pokeVarieties, setPokeVarieties] = useState<Variety[]>([]);
   const [pokeEvolutions, setPokeEvolutions] = useState<Species[]>([]);
   const [pokeDetails, setPokeDetails] = useState<PokeSpeciesInfo[]>([]);
+  const [isPokeDetailsLoading, setIsPokeDetailsLoading] = useState(false);
 
   const getPokeStats = async (pokeName: string | undefined): Promise<void> => {
-    setIsPokeStatsLoading(true);
+    setIsPokeDetailsLoading(true);
 
     try {
       const { data } = await axiosAPI.get<PokeStatsInfo>(`pokemon/${pokeName?.toLowerCase()}`);
       setPokeStats([data]);
       getPokeDetails(data);
-      setIsPokeStatsLoading(false);
     } catch (err) {
       navigate('/pokemon', { replace: true });
-      setIsPokeStatsLoading(false);
+      setIsPokeDetailsLoading(false);
     }
   };
 
-  const getPokeDetails = async (pokeStats: PokeStatsInfo | undefined): Promise<void> => {
-    if (!pokeStats) return;
-    setIsPokeDetailsLoading(true);
-
+  const getPokeDetails = async (pokeStats: PokeStatsInfo): Promise<void> => {
     try {
       const {
         species: { url: pokePokeDetailsURL },
@@ -97,13 +90,13 @@ export const usePokeDetails = (): usePokeDetailsReturn => {
       setIsPokeDetailsLoading(false);
     } catch (err) {
       console.error(err);
+      setIsPokeDetailsLoading(false);
     }
   };
 
   return {
     getPokeStats,
     isPokeDetailsLoading,
-    isPokeStatsLoading,
     pokeDetails,
     pokeVarieties,
     pokeEvolutions,
