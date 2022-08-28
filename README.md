@@ -22,7 +22,7 @@ Users should be able to:
 - Have request cancellation when using the search bar.
 - Fetch Pokemon cards at home page with infinite scrolling support.
 - Have autocompletion when searching for Pokemons using the API.
-- Check Pokemons informations such as Stats, Evolutions, Types and more.
+- Check Pokemon informations such as Stats, Evolutions, Types and more.
 
 ## Screenshots
 
