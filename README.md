@@ -20,8 +20,8 @@ Users should be able to:
 - Have support for mobile devices.
 - Hear the Kanto generation Pokemon cries.
 - Have request cancellation when using the search bar.
-- Have autocompletion when searching for Pokemons using the API.
 - Fetch Pokemon cards at home page with infinite scrolling support.
+- Have autocompletion when searching for Pokemons using the API.
 - Check Pokemons informations such as Stats, Evolutions, Types and more.
 
 ## Screenshots
