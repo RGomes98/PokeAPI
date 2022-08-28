@@ -1,6 +1,6 @@
 # React - PokeAPI
 
-This is a React App that fetches data from PokeAPI.
+This is a React App that fetches and display data from PokeAPI.
 
 ## Table of contents
 
@@ -51,7 +51,7 @@ Users should be able to:
 ### Built with
 
 - SCSS.
-- React.
 - Axios.
+- React.
 - Typescript.
 - React Router.
