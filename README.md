@@ -1,11 +1,11 @@
 # React - PokeAPI
 
-This is a React Web App that fetches data from PokeAPI.
+This is a React App that fetches data from PokeAPI.
 
 ## Table of contents
 
 - [Overview](#overview)
-  - [The Web App](#the-web-app)
+  - [The App](#the-app)
   - [Screenshots](#screenshots)
   - [Links](#links)
 - [My process](#my-process)
@@ -13,7 +13,7 @@ This is a React Web App that fetches data from PokeAPI.
 
 ## Overview
 
-### The Web App
+### The App
 
 Users should be able to:
 
@@ -50,8 +50,8 @@ Users should be able to:
 
 ### Built with
 
-- SASS.
-- REACT.
-- AXIOS.
-- TYPESCRIPT.
-- REACT ROUTER.
+- SCSS.
+- React.
+- Axios.
+- Typescript.
+- React Router.
