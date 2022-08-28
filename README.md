@@ -34,7 +34,7 @@ Users should be able to:
 
 ![](/screenshots/searchbar.png)
 
-### Pokemon Info Page
+### Pokemon information Page
 
 ![](/screenshots/pokeinfopage.png)
 
