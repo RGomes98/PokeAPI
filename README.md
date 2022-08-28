@@ -1,46 +1,57 @@
-# Getting Started with Create React App
+# React - PokeAPI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a React Web App that fetches data from PokeAPI.
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+- [Overview](#overview)
+  - [The Web App](#the-web-app)
+  - [Screenshots](#screenshots)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
 
-### `npm start`
+## Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### The Web App
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Users should be able to:
 
-### `npm test`
+- Have support for mobile devices.
+- Hear the Kanto generation Pokemon cries.
+- Have request cancellation when using the search bar.
+- Have autocompletion when searching for Pokemons using the API.
+- Fetch Pokemon cards at home page with infinite scrolling support.
+- Check Pokemons informations such as Stats, Evolutions, Types and more.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Screenshots
 
-### `npm run build`
+### Home Page
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![](/screenshots/homepage.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Search Bar
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![](/screenshots/searchbar.png)
 
-### `npm run eject`
+### Pokemon Info Page
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![](/screenshots/pokeinfopage.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Not Found Page
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![](/screenshots/notfoundpage.png)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Links
 
-## Learn More
+- Live Site URL: [Live Site](https://poke-api-opal.vercel.app/)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## My process
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Built with
+
+- SASS.
+- REACT.
+- AXIOS.
+- TYPESCRIPT.
+- REACT ROUTER.
