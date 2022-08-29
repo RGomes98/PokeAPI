@@ -28,19 +28,19 @@ Users should be able to:
 
 ### Home Page
 
-![](/screenshots/homepage.png)
+![](/screenshots/home.png)
 
 ### PokeSearch
 
-![](/screenshots/searchbar.png)
+![](/screenshots/pokeSearch.png)
 
 ### Pokemon Details Page
 
-![](/screenshots/pokeinfopage.png)
+![](/screenshots/pokeDetails.png)
 
 ### Not Found Page
 
-![](/screenshots/notfoundpage.png)
+![](/screenshots/notFound.png)
 
 ## Links
 
