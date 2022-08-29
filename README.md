@@ -30,11 +30,11 @@ Users should be able to:
 
 ![](/screenshots/homepage.png)
 
-### Search Bar
+### PokeSearch
 
 ![](/screenshots/searchbar.png)
 
-### Pokemon information Page
+### Pokemon Details Page
 
 ![](/screenshots/pokeinfopage.png)
 
