@@ -133,25 +133,25 @@
 
         .statsUnitNumber {
           order: 1;
-          font-size: 1.5rem;
+          font-size: 1.4rem;
           font-weight: 500;
           align-items: center;
           color: variables.$font-color;
 
           .statsUnitDisplay {
             font-weight: 300;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
           }
           @media (max-width: 400px) {
             .statsUnitDisplay {
-              font-size: 1.25rem;
+              font-size: 1.2rem;
             }
           }
         }
 
         .statsUnitName {
           border-top: none;
-          font-size: 1.5rem;
+          font-size: 1.4rem;
           font-weight: 300;
           margin-right: 0.5rem;
           color: variables.$font-color-dark-grey;
@@ -159,7 +159,7 @@
         @media (max-width: 400px) {
           .statsUnitName,
           .statsUnitNumber {
-            font-size: 1.35rem;
+            font-size: 1.3rem;
           }
         }
       }
