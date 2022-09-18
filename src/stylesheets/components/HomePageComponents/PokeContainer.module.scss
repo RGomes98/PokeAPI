@@ -3,10 +3,11 @@
 
 //PokeContainer Styles
 .pokeContainer {
-  width: 90%;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 3rem 2.5rem;
+  width: 95%;
   margin-top: 5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, max-content));
   justify-content: center;
+  row-gap: 3rem;
+  column-gap: 2.5rem;
 }

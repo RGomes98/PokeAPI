@@ -1,15 +1,27 @@
+import { useEffect } from 'react';
+
 import { PokeCard } from '../PokeCard/PokeCard';
 import { usePokeAPIContext } from '../../context/PokeAPIContext';
 
 import styles from '../../stylesheets/components/HomePageComponents/PokeContainer.module.scss';
 
 export const PokeContainer = () => {
-  const { pokeData } = usePokeAPIContext();
+  const { pokeData, pokeDataDelaySlice, setPokeDataDelaySlice } = usePokeAPIContext();
+
+  useEffect(() => {
+    if (pokeDataDelaySlice < pokeData.length) {
+      const renderDelay = setTimeout(() => {
+        setPokeDataDelaySlice((prev) => prev + 1);
+      }, 300);
+
+      return () => clearTimeout(renderDelay);
+    }
+  });
 
   return (
     <div className={styles.pokeContainer}>
-      {pokeData.map((poke, idx) => {
-        return <PokeCard pokeData={poke} key={idx} />;
+      {pokeData.slice(0, pokeDataDelaySlice).map((poke) => {
+        return <PokeCard pokeData={poke} key={poke?.name} />;
       })}
     </div>
   );

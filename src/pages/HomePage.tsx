@@ -12,7 +12,7 @@ import pokeLogo from '../assets/svg/pokemonLogo.svg';
 import styles from '../stylesheets/pages/HomePage.module.scss';
 
 export const HomePage: React.FC = () => {
-  const { pokeData, homePageScrollYPosition } = usePokeAPIContext();
+  const { pokeOffset, pokeDataDelaySlice, homePageScrollYPosition } = usePokeAPIContext();
 
   const { getPokes, isPokeAPILoading } = usePokeFetch();
 
@@ -23,8 +23,7 @@ export const HomePage: React.FC = () => {
   });
 
   useEffect(() => {
-    !pokeData && getPokes();
-    if (isVisible) {
+    if (isVisible && pokeOffset <= pokeDataDelaySlice) {
       setIsVisible(false);
       getPokes();
     }

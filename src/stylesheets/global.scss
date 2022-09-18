@@ -8,6 +8,7 @@
   box-sizing: border-box;
   user-select: none;
   body {
+    overflow-x: hidden;
     color: variables.$font-color;
     font-family: variables.$poppins-font;
     background-color: variables.$body-color;

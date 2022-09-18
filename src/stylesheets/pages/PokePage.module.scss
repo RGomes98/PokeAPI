@@ -9,6 +9,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  animation: ease 600ms pokePageFadeIn;
 
   .searchBarWrapper {
     width: 100%;
@@ -107,5 +108,18 @@
 @media (max-width: 1150px) {
   .pokePageContainer {
     padding: 7rem 0 3rem 0;
+  }
+}
+
+//PokePage Animations
+
+@keyframes pokePageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+
+  to {
+    opacity: 1;
   }
 }

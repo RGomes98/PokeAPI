@@ -33,7 +33,8 @@ export const usePokeFetch = (): usePokeAPIReturn => {
     }
 
     setIsPokeAPILoading(true);
-    pokeOffset === POKE_OFFSET_MAX_SIZE && setPokelimit(POKE_FETCH_LIMITER);
+    setPokeOffset((prev) => prev + OFFSET_INCREMENT);
+    if (pokeOffset === POKE_OFFSET_MAX_SIZE) setPokelimit(POKE_FETCH_LIMITER);
 
     try {
       const {
@@ -47,7 +48,6 @@ export const usePokeFetch = (): usePokeAPIReturn => {
       );
 
       setIsPokeAPILoading(false);
-      setPokeOffset((prev) => prev + OFFSET_INCREMENT);
       setPokeData((prev) => [...prev, ...pokePromise]);
     } catch (err) {
       setIsPokeAPILoading(false);
