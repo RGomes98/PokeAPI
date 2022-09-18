@@ -4,18 +4,15 @@
 //CardStats Styles
 .statsContainer {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
-  gap: 0.1rem;
+  gap: 0.1rem 0.6rem;
 
   .statsWrapper {
-    flex-grow: 1;
-    height: 50px;
-    width: 20%;
+    width: 105px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 
     .statsUnitNumber {
@@ -23,18 +20,19 @@
       display: flex;
       justify-content: center;
       font-weight: 400;
-      font-size: 1.05rem;
+      font-size: 1rem;
 
       .statsUnitDisplay {
         color: variables.$font-color-dark-grey;
         font-weight: 300;
+        font-size: 1rem;
       }
     }
     .statsUnitName {
-      font-size: 0.95rem;
+      order: -1;
+      font-size: 1.1rem;
       font-weight: 400;
       color: variables.$font-color-dark-grey;
-      border-top: 1px solid variables.$font-color-grey;
     }
   }
 }

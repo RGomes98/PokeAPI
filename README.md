@@ -50,6 +50,7 @@ Users should be able to:
 
 ### Built with
 
+- MUI.
 - SCSS.
 - Axios.
 - React.

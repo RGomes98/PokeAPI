@@ -53,7 +53,7 @@ export const PokeSearchInput = () => {
     setFilteredPokeList(filter);
   };
 
-  const atHomePage = pathname === '/';
+  const atHomePage: boolean = pathname === '/';
 
   const searchInputFocus =
     isOnFocus && !pokeSearchResponse.length

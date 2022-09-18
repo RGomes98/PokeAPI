@@ -38,7 +38,7 @@ export const PokeCard: React.FC<{ pokeData: PokeStatsInfo }> = ({
           className={styles.infoButton}
         />
         <img src={sprites?.front_default} alt={name} className={styles.pokeImg} />
-        <h3 className={pokeNameStyles}>{name}</h3>
+        <p className={pokeNameStyles}>{name}</p>
       </div>
       <CardStats height={height} weight={weight} stats={stats} />
     </div>

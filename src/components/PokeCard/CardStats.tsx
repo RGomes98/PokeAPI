@@ -1,3 +1,4 @@
+import { useLocation } from 'react-router-dom';
 import { Stat } from '../../interfaces/PokeStatsInfo';
 
 import styles from '../../stylesheets/components/PokeCardComponents/CardStats.module.scss';
@@ -10,7 +11,10 @@ type CardStatsProps = {
 };
 
 export const CardStats: React.FC<CardStatsProps> = ({ height, weight, stats }) => {
+  const { pathname } = useLocation();
+
   const UNIT_FORMULA: number = 10;
+  const atHomePage: boolean = pathname === '/';
 
   const cardStatStyles = `${styles.statsWrapper} ${pokeInfoStyles.statsWrapper}`;
   const cardUnitNameStyles = `${styles.statsUnitName} ${pokeInfoStyles.statsUnitName}`;
@@ -24,17 +28,17 @@ export const CardStats: React.FC<CardStatsProps> = ({ height, weight, stats }) =
         const changeStatsNames = (name: string): string => {
           switch (name) {
             case 'hp':
-              return 'HP';
+              return atHomePage ? 'HP' : 'HEALTH';
             case 'speed':
-              return 'SPD';
+              return atHomePage ? 'SPD' : 'SPEED';
             case 'attack':
-              return 'ATT';
+              return atHomePage ? 'ATT' : 'ATTACK';
             case 'defense':
-              return 'DEF';
+              return atHomePage ? 'DEF' : 'DEFENSE';
             case 'special-attack':
-              return 'ATT-S';
+              return atHomePage ? 'ATT-S' : 'SPECIAL-ATTACK';
             case 'special-defense':
-              return 'DEF-S';
+              return atHomePage ? 'DEF-S' : 'SPECIAL-DEFENSE';
             default:
               return name;
           }
@@ -52,14 +56,14 @@ export const CardStats: React.FC<CardStatsProps> = ({ height, weight, stats }) =
           {height / UNIT_FORMULA}
           <span className={cardUnitDisplayStyles}>m</span>
         </span>
-        <p className={cardUnitNameStyles}>HEIGHT</p>
+        <p className={cardUnitNameStyles}>{atHomePage ? 'HGT' : 'HEIGHT'}</p>
       </div>
       <div className={cardStatStyles}>
         <span className={cardUnitNumberStyles}>
           {(weight / UNIT_FORMULA).toFixed(1)}
           <span className={cardUnitDisplayStyles}>kg</span>
         </span>
-        <p className={cardUnitNameStyles}>WEIGHT</p>
+        <p className={cardUnitNameStyles}>{atHomePage ? 'WGT' : 'WEIGHT'}</p>
       </div>
     </div>
   );
