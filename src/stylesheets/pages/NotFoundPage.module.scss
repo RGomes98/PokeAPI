@@ -8,6 +8,7 @@
   justify-content: center;
   flex-direction: column;
   min-height: 100vh;
+  animation: ease 600ms NotFoundPageFadeIn;
 
   .notFoundPokeballWrapper {
     display: flex;
@@ -109,5 +110,17 @@
   .notFoundButton,
   .notFoundText {
     font-size: clamp(0.9rem, 20vw, 1.1rem);
+  }
+}
+
+//NotFoundPage Animations
+@keyframes NotFoundPageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+
+  to {
+    opacity: 1;
   }
 }
