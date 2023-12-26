@@ -44,7 +44,7 @@ Users should be able to:
 
 ## Links
 
-- Live Site URL: [PokeAPI](https://poke-api-opal.vercel.app/)
+- Live Site URL: [PokeAPI](https://poke-api-rgomes98.vercel.app/)
 
 ## My process
 
