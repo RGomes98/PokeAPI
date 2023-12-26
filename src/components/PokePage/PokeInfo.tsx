@@ -15,10 +15,7 @@ type PokeInfoProps = {
   choosenpokemonDetails: PokeSpeciesInfo;
 };
 
-export const PokeInfo: React.FC<PokeInfoProps> = ({
-  choosenPokemonStats,
-  choosenpokemonDetails,
-}) => {
+export const PokeInfo: React.FC<PokeInfoProps> = ({ choosenPokemonStats, choosenpokemonDetails }) => {
   const navigate = useNavigate();
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
 
@@ -63,7 +60,8 @@ export const PokeInfo: React.FC<PokeInfoProps> = ({
     FIRST_POKE_ID < choosenPokemonStats?.id && LAST_POKE_ID >= choosenPokemonStats?.id;
 
   const selectedPokeFlavorText =
-    choosenpokemonDetails?.flavor_text_entries[flavorTextSelector(pokeGeneration)].flavor_text;
+    choosenpokemonDetails?.flavor_text_entries[flavorTextSelector(pokeGeneration)]?.flavor_text ||
+    choosenpokemonDetails?.flavor_text_entries[0].flavor_text;
 
   const pokeNameStyles =
     choosenPokemonStats?.name.includes('-') && choosenPokemonStats?.name.length > 10
@@ -71,8 +69,7 @@ export const PokeInfo: React.FC<PokeInfoProps> = ({
       : styles.pokeInfoName;
 
   const pokeFlavorTextStyles =
-    choosenpokemonDetails?.flavor_text_entries[flavorTextSelector(pokeGeneration)].flavor_text
-      .length < 150
+    selectedPokeFlavorText?.length < 150
       ? styles.pokeInfoFlavorText
       : `${styles.pokeInfoFlavorText} ${styles.pokeInfoFlavorTextTooBig}`;
 
@@ -86,9 +83,7 @@ export const PokeInfo: React.FC<PokeInfoProps> = ({
             isPokeSound={isAudioPlaying}
             setIsPokeSound={setIsAudioPlaying}
           />
-          <h1
-            className={pokeNameStyles}
-          >{`#.${choosenpokemonDetails?.id} ${choosenPokemonStats?.name}`}</h1>
+          <h1 className={pokeNameStyles}>{`#.${choosenpokemonDetails?.id} ${choosenPokemonStats?.name}`}</h1>
         </div>
         <div className={styles.pokeImgWrapper}>
           <img
